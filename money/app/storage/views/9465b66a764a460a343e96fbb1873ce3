@@ -1,0 +1,77 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php echo HTML::script(URL::to('bower_components/jquery/jquery-1.11.2.js')); ?>
+
+
+	<!-- Bootstrap 3 -->
+	<?php echo HTML::style(URL::to('bower_components/bootstrap-3.3.2/css/bootstrap.min.css')); ?>
+
+	<?php echo HTML::style(URL::to('bower_components/bootstrap-3.3.2/css/bootstrap-theme.css')); ?>
+
+
+	<!-- Flat UI -->
+	<?php echo HTML::style(URL::to('bower_components/Flat-UI/dist/css/vendor/bootstrap.min.css')); ?>
+
+	<?php echo HTML::style(URL::to('bower_components/Flat-UI/dist/css/flat-ui.css')); ?>
+
+
+	<!-- DataTable -->
+	<?php echo HTML::style(URL::to('bower_components/DataTables-1.10.5/media/css/dataTables.bootstrap.css')); ?>
+
+
+	<!-- Custom -->
+	<?php echo HTML::style(URL::to('custom/custom.css')); ?>
+
+
+	<title>iMONEY</title>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/">i<strong style="color:orange">MONEY</strong></a>
+	    </div>
+	    <div id="navbar" class="navbar-collapse collapse">
+	      <ul class="nav navbar-nav">
+	        <li class="<?php echo (Route::current()->getUri() == 'overview')?'active':""; ?>"><a href="overview">Overview</a></li>
+	        <li class="<?php echo (Route::current()->getUri() == 'writhdraw')?'active':""; ?>"><a href="writhdraw">Whritdraw</a></li>
+	        <li class="<?php echo (Route::current()->getUri() == 'deposite')?'active':""; ?>"><a href="#contact">Deposite</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Setting <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="#">Setting</a></li>
+	            <li><a href="#">Logout</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div><!--/.nav-collapse -->
+	  </div>
+	</nav>
+	<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+		<?php echo $__env->yieldContent('content'); ?>
+	</div>
+	<?php echo HTML::script(URL::to('bower_components/Flat-UI/dist/js/vendor/jquery.min.js')); ?>
+
+	<?php echo HTML::script(URL::to('bower_components/bootstrap-3.3.2/js/bootstrap.min.js')); ?>
+
+	<?php echo HTML::script(URL::to('bower_components/DataTables-1.10.5/media/js/jquery.dataTables.min.js')); ?>
+
+	<?php echo HTML::script(URL::to('bower_components/DataTables-1.10.5/media/js/dataTables.bootstrap.js')); ?>
+
+	<?php echo HTML::script(URL::to('bower_components/Flat-UI/dist/js/vendor/video.js')); ?>
+
+	<!-- <?php echo HTML::script(URL::to('bower_components/Flat-UI/dist/js/flat-ui.min.js')); ?> -->
+	<?php echo HTML::script(URL::to('bower_components/Flat-UI/docs/assets/js/application.js')); ?>
+
+</body>
+</html>

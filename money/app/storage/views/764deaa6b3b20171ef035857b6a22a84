@@ -1,0 +1,115 @@
+<?php $__env->startSection('content'); ?>
+  <!-- Main component for a primary marketing message or call to action -->
+  <fieldset>
+     <legend><h3>Writh<strong style="color:orange">draw</strong></h3></legend>
+  	<table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Money</th>
+          <th class="text-center">Detail</th>
+          <th class="text-center">From</th>
+          <th class="text-center">Time</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      	<?php foreach($writhdraw as $idx => $value): ?>
+        <tr>
+          <th class="text-center" scope="row"><?php echo $idx+1; ?></th>
+          <td class="text-right"><?php echo $value->money; ?></td>
+          <td><?php echo $value->detail; ?></td>
+          <td><?php echo isset($value->user->profile->firstname)?$value->user->profile->firstname." ".$value->user->profile->lastname:""; ?></td>
+          <td><?php echo $value->time; ?> <em>("<?php echo $value->format_datetime; ?>")</em></td>
+          <td>
+            <?php echo Form::open(array('url' => 'writhdraw/' . $value->idMoney, 'class' => 'pull-left')); ?>
+
+                <?php echo Form::hidden('_method', 'DELETE'); ?>
+
+                    <button type="submit" class="btn btn-danger btn-xs" title="Delete">
+                        <span aria-hidden="true" class="fui-cross"></span>
+                    </button>
+                <?php echo Form::close(); ?>
+
+          </td>
+        </tr>
+        <?php endforeach; ?>
+      </tbody>
+      <tfoot>
+      	<tr>
+      		<td></td>
+      		<td></td>
+      		<td></td>
+          <td></td>
+      		<td></td>
+      		<th class="text-right">Total: <?php echo $total_writhdraw; ?> BATH</th>
+      	</tr>
+      </tfoot>
+    </table>
+  </fieldset>
+    <?php echo Form::open(array('url' => 'writhdraw/save','class'=>'form-horizontal')); ?>
+
+    <fieldset>
+      <!-- Form Name -->
+        <legend><strong>Writhdraw</strong> money to...</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-1" for="money">Money:</label>  
+        <div class="col-md-4">
+        <input id="money" name="money" type="text" placeholder="000.00" class="form-control input-sm" required="">
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-1" for="detail">Detail:</label>  
+        <div class="col-md-4">
+        <textarea id="detail" name="detail" type="text" placeholder="detail" class="form-control input-sm"></textarea>
+        </div>
+      </div>
+
+      <!-- Select Basic -->
+      <div class="form-group">
+        <label class="col-md-1" for="User">Form:</label>
+        <div class="col-md-4">
+          <select id="User" name="User" class="form-control input-sm" required="">
+            <option value="">-- select user --</option>
+            <option value="1">รังสิมันต์ หารวงษา</option>
+            <option value="2">ปัทซี่</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-1 control-label" for="submit"></label>
+        <div class="col-md-4">
+          <?php echo Form::submit('Save',array('class' => 'btn btn-primary pull-right','mag-length'=>'7')); ?>
+
+        </div>
+      </div>
+    </fieldset>
+
+    <?php echo Form::close(); ?>
+
+
+    <script type="text/javascript">
+    $(function(){
+        $('.table').DataTable();
+
+        $('input[type="text"],select#User').focusout(function()
+        {
+          if ($(this).val() == "") 
+          {
+            $(this).removeClass('hasValue');
+          }
+          else
+          {
+            $(this).addClass('hasValue');
+          }
+        });
+      });
+    </script>
+
+<?php $__env->stopSection(); ?>

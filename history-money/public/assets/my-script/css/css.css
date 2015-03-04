@@ -1,0 +1,20 @@
+.navbar-default
+{
+	background-color: #23222C;
+}
+.active
+{
+	border-bottom: solid 2px #F85959;
+}
+body
+{
+	background-color: #DDDDDD;
+}
+#content
+{
+	/*background-color: white;*/
+}
+.navbar
+{
+	margin-bottom: 0px;
+}
