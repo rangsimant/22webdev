@@ -55,7 +55,7 @@ class FacebookController extends Controller
 
                 $newAccount = array(
                     'idFacebook'=>$idFacebook,
-                    'username'=>$first_name,
+                    'username'=>$idFacebook,
                     'password'=>$idFacebook,
                     'first_name'=>$first_name,
                     'last_name'=>$last_name,
@@ -69,7 +69,7 @@ class FacebookController extends Controller
                 echo $message. "<br/>";
 
                 $login = array(
-                    'email'=>$first_name,
+                    'email'=>$idFacebook,
                     'password'=>$idFacebook,
                     'remember'=>'0'
                     );
@@ -78,10 +78,11 @@ class FacebookController extends Controller
             {
                 $login = array(
                     'email'=>$user[0]->username,
-                    'password'=>$user[0]->idSocial,
+                    'password'=>$user[0]->username,
                     'remember'=>'0'
                     );
             }
+            $this->user->updateAccountFacebook($result);
             $this->doLogin($login);
             return Redirect::to('/');
 

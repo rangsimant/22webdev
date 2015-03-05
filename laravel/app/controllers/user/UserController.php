@@ -82,6 +82,8 @@ class UserController extends BaseController {
         $oldUser = clone $user;
 
         $user->username = Input::get('username');
+        $user->first_name = Input::get('first_name');
+        $user->last_name = Input::get('last_name');
         $user->email = Input::get('email');
 
         $password = Input::get('password');

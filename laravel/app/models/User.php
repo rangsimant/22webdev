@@ -113,4 +113,14 @@ class User extends Eloquent implements ConfideUserInterface {
         return $this->email;
     }
 
+    public function updateAccountFacebook($fb)
+    {
+        // echo "<pre>";
+        // print_r($fb);die();
+        $user = User::where('idSocial',$fb['id'])->get();
+        $user[0]->first_name = $fb['first_name'];
+        $user[0]->last_name = $fb['last_name'];
+        $user[0]->save();
+    }
+
 }

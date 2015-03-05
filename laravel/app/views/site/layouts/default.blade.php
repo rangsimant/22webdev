@@ -77,7 +77,7 @@
                         @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
                         @endif
-                        <li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>
+                        <li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->first_name." ".Auth::user()->last_name }}}</a></li>
                         <li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
                         @else
                         <li  class="{{ (Request::is('user/login') ? 'active' : '') }}"><a href="{{{ URL::to('user/login') }}}">Login</a></li>

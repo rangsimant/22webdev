@@ -16,7 +16,7 @@
     <label class="col-md-2 control-label" for="password">
     </label>
     <div class="col-md-3 row">
-       <a href="{{ URL::to('login/facebook') }}"class="btn btn-block btn-social btn-facebook">
+       <a href="{{ URL::to('login/facebook') }}"class="btn btn-social btn-facebook">
             <i class="fa fa-facebook"></i> Sign in with Facebook
         </a>
     </div>
