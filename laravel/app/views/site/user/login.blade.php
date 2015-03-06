@@ -31,7 +31,7 @@
 			        </div>
 				</div>
 			</div>
-			<div class="main">	
+			<div class="main">
 	        <input class="form-control" tabindex="1" placeholder="{{{ Lang::get('confide::confide.username_e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}" autofocus>
 			<input class="form-control" tabindex="2" placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">
 			<div class="checkbox">

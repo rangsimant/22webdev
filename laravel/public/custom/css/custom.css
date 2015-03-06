@@ -286,11 +286,11 @@ select[multiple], select[size]
   font-weight:bold;
   font-size:20px;
 }
-.heading-desc{
-	font-size:20px;
-	font-weight:bold;
-	padding:38px 38px 0px 38px;
-	
+.heading-desc {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 38px 38px 0px 38px;
+  border-bottom: 1px solid #eee;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {

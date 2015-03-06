@@ -17,22 +17,22 @@
 			Create Account</h3>
 			<div class="main">
 
-			<div style="margin-bottom: 25px" class="input-group">
+			<div style="margin-bottom: 15px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             	<input class="form-control" placeholder="{{{ Lang::get('confide::confide.username') }}}" type="text" name="username" id="username" value="{{{ Input::old('username') }}}" autofocus>
             </div>
 			
-			<div style="margin-bottom: 25px" class="input-group">
+			<div style="margin-bottom: 15px" class="input-group">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 	            <input class="form-control" placeholder="{{{ Lang::get('confide::confide.e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}">
             </div>
 
-			<div style="margin-bottom: 25px" class="input-group">
+			<div style="margin-bottom: 15px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 	            <input class="form-control" placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">
             </div>
 
-			<div style="margin-bottom: 25px" class="input-group">
+			<div style="margin-bottom: 15px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 	            <input class="form-control" placeholder="{{{ Lang::get('confide::confide.password_confirmation') }}}" type="password" name="password_confirmation" id="password_confirmation">
             </div>
