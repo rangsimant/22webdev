@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			{{ isset($title)?$title:"My Website" }}
+			{{ isset($title)?$title:"ADSCenter :: 22webdev" }}
 			@show
 		</title>
 		@section('meta_keywords')
@@ -46,7 +46,9 @@
 
 		<!-- Favicons
 		================================================== -->
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{{ asset('assets/ico/apple-touch-icon-144-precomposed.png') }}}">
+		<link rel="aToggle navigation
+
+pple-touch-icon-precomposed" sizes="144x144" href="{{{ asset('assets/ico/apple-touch-icon-144-precomposed.png') }}}">
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{{ asset('assets/ico/apple-touch-icon-114-precomposed.png') }}}">
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{{ asset('assets/ico/apple-touch-icon-72-precomposed.png') }}}">
 		<link rel="apple-touch-icon-precomposed" href="{{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}}">
@@ -57,7 +59,7 @@
 		<!-- To make sticky footer need to wrap in a div -->
 		<div id="wrap">
 		<!-- Navbar -->
-		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+		<div class="navbar navbar-inverse navbar-fixed-top">
 			 <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -66,6 +68,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+	                <strong><a class="navbar-brand" href="#"><span style="color:orange">ADS</span>Center</a></strong>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
@@ -92,6 +95,7 @@
 
 		<!-- Container -->
 		<div class="container">
+
 			<!-- Notifications -->
 			@include('notifications')
 			<!-- ./ notifications -->
@@ -101,12 +105,14 @@
 			<!-- ./ content -->
 		</div>
 		<!-- ./ container -->
+		<footer class="footer">
+	      <div class="container text-center">
+	        <p class="text-muted">22webdev Coperation.</p>
+	      </div>
+	    </footer>
 
 		<!-- the following div is needed to make a sticky footer -->
-		<div id="push"></div>
-		</div>
 		<!-- ./wrap -->
-
 
 		<!-- Javascripts
 		================================================== -->
