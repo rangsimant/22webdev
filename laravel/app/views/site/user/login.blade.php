@@ -23,6 +23,13 @@
 				        </a>
 			        </div>
 				</div>
+				<div class="row">
+					<div class="col-md-12">
+		                <a class="btn btn-block btn-social btn-google-plus">
+                            <i class="fa fa-google-plus"></i> Sign in with Google
+                        </a>
+			        </div>
+				</div>
 			</div>
 			<div class="main">	
 	        <input class="form-control" tabindex="1" placeholder="{{{ Lang::get('confide::confide.username_e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}" autofocus>
