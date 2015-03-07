@@ -80,7 +80,12 @@ pple-touch-icon-precomposed" sizes="144x144" href="{{{ asset('assets/ico/apple-t
                         @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
                         @endif
-                        <li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->first_name." ".Auth::user()->last_name }}}</a></li>
+                        <li class="{{ (Request::is('user') ? 'active' : '') }}">
+                        	<a href="{{{ URL::to('user') }}}" style="padding-top: 6px;padding-bottom: 4px;">
+	                        <img src="{{ (Auth::user()->picture != null)?Auth::user()->picture:'http://placehold.it/40x40'; }}" alt="Avatar" class="avatar-thumbnail" width="40px" height="40px">
+                        	 {{{ Auth::user()->first_name." ".Auth::user()->last_name }}}
+                        	</a>
+                        </li>
                         <li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
                         @else
                         <li  class="{{ (Request::is('user/login') ? 'active' : '') }}"><a href="{{{ URL::to('user/login') }}}">Login</a></li>
