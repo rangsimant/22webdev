@@ -84,11 +84,11 @@ class GoogleController extends Controller
                     'password'=>$user[0]->username,
                     'remember'=>'0'
                     );
-            }
 
-            $result['first_name'] = $result['given_name'];
-            $result['last_name'] = $result['family_name'];
-            $this->user->updateAccount($result);
+                $result['first_name'] = $result['given_name'];
+                $result['last_name'] = $result['family_name'];
+                $this->user->updateAccount($result);
+            }
             $this->doLogin($login);
             return Redirect::to('/');
 

@@ -113,6 +113,7 @@ return array(
         'Zizaco\Confide\ServiceProvider', // Confide Provider
         'Zizaco\Entrust\EntrustServiceProvider', // Entrust Provider for roles
         'Bllim\Datatables\DatatablesServiceProvider', // Datatables
+        'Kmd\Logviewer\LogviewerServiceProvider', // Log Viewer
 
         'Artdarek\OAuth\OAuthServiceProvider',  // OAuth wrapper for Laravel 4
 

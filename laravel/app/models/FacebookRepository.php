@@ -32,7 +32,7 @@ class FacebookRepository extends UserRepository
 
 		// Save if valid. Password field will be hashed before save
 		$this->save($user);
-
+		log::debug("Create new Account ".$user->idSocial." From Facebook.\n".json_encode($user));
 		return $user;
 	}
 

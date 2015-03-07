@@ -65,8 +65,6 @@ class FacebookController extends Controller
 
                     );
                 $affectedRow = $this->create($newAccount);
-                $message = 'Your unique facebook user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
-                echo $message. "<br/>";
 
                 $login = array(
                     'email'=>$idFacebook,
@@ -81,8 +79,8 @@ class FacebookController extends Controller
                     'password'=>$user[0]->username,
                     'remember'=>'0'
                     );
+                $this->user->updateAccount($result);
             }
-            $this->user->updateAccount($result);
             $this->doLogin($login);
             return Redirect::to('/');
 

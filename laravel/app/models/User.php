@@ -125,6 +125,7 @@ class User extends Eloquent implements ConfideUserInterface {
             $user[0]->picture = $data['picture'];
         }
         $user[0]->save();
+        log::debug("Update Account ID: ".$data['id']."\n".json_encode($data));
     }
 
 }
