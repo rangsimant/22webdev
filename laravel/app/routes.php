@@ -112,3 +112,4 @@ Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getInde
 
 
 Route::get('login/facebook','FacebookController@loginWithFacebook');
+Route::get('login/google','GoogleController@loginWithGoogle');

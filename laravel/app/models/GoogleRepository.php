@@ -3,7 +3,7 @@
 /**
 * 
 */
-class FacebookRepository extends UserRepository
+class GoogleRepository extends UserRepository
 {
 	protected $table = 'users';
 	protected $primaryKey = 'id';
@@ -20,6 +20,7 @@ class FacebookRepository extends UserRepository
 		$user->last_name = array_get($input, 'last_name');
 		$user->confirmed = array_get($input, 'confirmed');
 		$user->channel = array_get($input, 'channel');
+		$user->picture = array_get($input, 'picture');
 
 
 		// The password confirmation will be removed from model

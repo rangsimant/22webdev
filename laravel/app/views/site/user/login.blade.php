@@ -25,7 +25,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-		                <a class="btn btn-block btn-social btn-google-plus">
+		                <a href="{{ URL::to('login/google') }}"class="btn btn-block btn-social btn-google-plus">
                             <i class="fa fa-google-plus"></i> Sign in with Google
                         </a>
 			        </div>

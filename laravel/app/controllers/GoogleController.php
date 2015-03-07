@@ -5,7 +5,7 @@
  * @return void
  */
 
-class FacebookController extends Controller 
+class GoogleController extends Controller 
 {
 
     private $user;
@@ -15,53 +15,56 @@ class FacebookController extends Controller
      */
     protected $userRepo;
 
-    public function __construct(User $user,FacebookRepository $userRepo)
+    public function __construct(User $user,GoogleRepository $userRepo)
     {
         $this->user = $user;
         $this->userRepo = $userRepo;
     }
-    public function loginWithFacebook() 
-    {
+    public function loginWithGoogle() {
+
         // get data from input
         $code = Input::get( 'code' );
 
-        // get fb service
-        $fb = OAuth::consumer( 'Facebook' );
+        // get google service
+        $googleService = OAuth::consumer( 'Google' );
 
         // check if code is valid
 
         // if code is provided get user data and sign in
         if ( !empty( $code ) ) {
 
-            // This was a callback request from facebook, get the token
-            $token = $fb->requestAccessToken( $code );
+            // This was a callback request from google, get the token
+            $token = $googleService->requestAccessToken( $code );
 
             // Send a request with it
-            $result = json_decode( $fb->request( '/me' ), true );
+            $result = json_decode( $googleService->request( 'https://www.googleapis.com/oauth2/v1/userinfo' ), true );
+
 
             $user = User::select('username','idSocial')->where('idSocial',$result['id'])->get();
-
-            // create new account Facebook to database
+            
+            // create new account Google to database
 
             // check Available account
             if (!isset($user[0]))
             {
-                $idFacebook = $result['id'];
-                $first_name = $result['first_name'];
-                $last_name = $result['last_name'];
-                $email = $idFacebook.'@facebook.com';
+                $idGoogle = $result['id'];
+                $first_name = $result['given_name'];
+                $last_name = $result['family_name'];
+                $email = $idGoogle.'@gmail.com';
+                $picture = $result['picture'];
                 if (isset($result['email']))
                     $email = $result['email'];
 
                 $newAccount = array(
-                    'id'=>$idFacebook,
-                    'username'=>$idFacebook,
-                    'password'=>$idFacebook,
+                    'id'=>$idGoogle,
+                    'username'=>$idGoogle,
+                    'password'=>$idGoogle,
                     'first_name'=>$first_name,
                     'last_name'=>$last_name,
                     'email'=>$email,
                     'confirmed'=>'1',
-                    'channel'=>'facebook'
+                    'channel'=>'google',
+                    'picture'=> $picture
 
                     );
                 $affectedRow = $this->create($newAccount);
@@ -69,8 +72,8 @@ class FacebookController extends Controller
                 echo $message. "<br/>";
 
                 $login = array(
-                    'email'=>$idFacebook,
-                    'password'=>$idFacebook,
+                    'email'=>$idGoogle,
+                    'password'=>$idGoogle,
                     'remember'=>'0'
                     );
             }
@@ -82,6 +85,9 @@ class FacebookController extends Controller
                     'remember'=>'0'
                     );
             }
+
+            $result['first_name'] = $result['given_name'];
+            $result['last_name'] = $result['family_name'];
             $this->user->updateAccount($result);
             $this->doLogin($login);
             return Redirect::to('/');
@@ -89,12 +95,12 @@ class FacebookController extends Controller
         }
         // if not ask for permission first
         else {
-            // get fb authorization
-            $url = $fb->getAuthorizationUri();
-            // return to facebook login url
-            return Redirect::to( (String)$url );
-        }
+            // get googleService authorization
+            $url = $googleService->getAuthorizationUri();
 
+            // return to google login url
+            return Redirect::to( (string)$url );
+        }
     }
 
     private function create($value)
