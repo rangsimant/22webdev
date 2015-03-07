@@ -81,8 +81,8 @@ pple-touch-icon-precomposed" sizes="144x144" href="{{{ asset('assets/ico/apple-t
                         <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
                         @endif
                         <li class="{{ (Request::is('user') ? 'active' : '') }}">
-                        	<a href="{{{ URL::to('user') }}}" style="padding-top: 6px;padding-bottom: 4px;">
-	                        <img src="{{ (Auth::user()->picture != null)?Auth::user()->picture:'http://placehold.it/40x40'; }}" alt="Avatar" class="avatar-thumbnail" width="40px" height="40px">
+                        	<a href="{{{ URL::to('user') }}}" style="padding-top: 6px;padding-bottom: 6px;">
+	                        <img src="{{ (Auth::user()->picture != null)?Auth::user()->picture:URL::to('custom/image/22avatar.png'); }}" alt="Avatar" class="avatar-thumbnail" width="38px">
                         	 {{{ Auth::user()->first_name." ".Auth::user()->last_name }}}
                         	</a>
                         </li>

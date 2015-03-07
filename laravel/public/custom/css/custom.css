@@ -8,7 +8,6 @@
     font-family: "brand";
     src:url(../font/Homenaje/Homenaje-Regular.ttf);
 }
-
 body
 {
 	background-color:#FAFAFA;
@@ -359,13 +358,12 @@ select[multiple], select[size]
   display: inline-block;
   max-width: 100%;
   height: auto;
-  padding: 1px;
   line-height: 1.42857143;
-  background-color: #fff;
-  -webkit-box-shadow: 0px 0px 3px 0px black;
-  -o-box-shadow: 0px 0px 3px 0px black;
-  box-shadow: 0px 0px 3px 0px black;
-  border-radius: 4px;
+  background-color: rgba(239, 239, 239, 1);
+  -webkit-box-shadow: 0px 0px 2px 0px black; */
+  -o-box-shadow: 0px 0px 2px 0px black;
+  box-shadow: 0px 0px 2px 0px rgb(95, 95, 95);
+  border-radius: 5px;
   -webkit-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
