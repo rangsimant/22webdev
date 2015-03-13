@@ -16,7 +16,9 @@
 	    	<h3 class="heading-desc">
 			Create Account</h3>
 			<div class="main">
-
+			<!-- Notifications -->
+			@include('notifications')
+			<!-- ./ notifications -->
 			<div style="margin-bottom: 15px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             	<input class="form-control" placeholder="{{{ Lang::get('confide::confide.username') }}}" type="text" name="username" id="username" value="{{{ Input::old('username') }}}" autofocus>
@@ -39,8 +41,15 @@
 
 	        </div>
 			<div class="signup-footer">
-		            <div class="pull-right">
-	            		<button type="submit" class="btn btn-info">{{{ Lang::get('confide::confide.signup.submit') }}}</button>
+				 <div class="col-xs-8 col-md-8">
+		                <div class="left-section">
+							You can login with 
+								<a href="{{ URL::to('login/facebook') }}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+								<a href="{{ URL::to('login/google') }}" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus"></i></a>
+						</div>
+		            </div>
+		            <div class="col-xs-4 col-md-4">
+	            		<button type="submit" class="btn btn-info pull-right">{{{ Lang::get('confide::confide.signup.submit') }}}</button>
 		            </div>
 			</div>
 		</fieldset>

@@ -32,6 +32,9 @@
 				</div>
 			</div>
 			<div class="main">
+			<!-- Notifications -->
+			@include('notifications')
+			<!-- ./ notifications -->
 	        <input class="form-control" tabindex="1" placeholder="{{{ Lang::get('confide::confide.username_e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}" autofocus>
 			<input class="form-control" tabindex="2" placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">
 			<div class="checkbox">
@@ -43,14 +46,14 @@
 	        </div>
 			<div class="login-footer">
 				<div class="row">
-		            <div class="col-xs-6 col-md-6">
+		            <div class="col-xs-8 col-md-8">
 		                <div class="left-section">
 							<a href="{{{ URL::to('user/forgot') }}}">{{{ Lang::get('confide::confide.login.forgot_password') }}}</a>
 							</br>
 							<a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a>
 						</div>
 		            </div>
-		            <div class="col-xs-6 col-md-6 pull-right">
+		            <div class="col-xs-4 col-md-4 pull-right">
 	            		<button tabindex="3" type="submit" class="btn btn-large btn-info pull-right">{{{ Lang::get('confide::confide.login.submit') }}}</button>
 		            </div>
 		        </div>

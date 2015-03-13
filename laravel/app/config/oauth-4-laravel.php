@@ -23,7 +23,8 @@ return array(
         'Facebook' => array(
             'client_id'     => '599818006801093',
             'client_secret' => '9e2ea858c35150511d9cad5b546b570b',
-            'scope'         => array('email'),
+            'scope'         => array('email','user_friends'),
+            // 'scope'         => array('email','user_friends','user_education_history','manage_notifications','read_mailbox','read_page_mailboxes'),
         ),
         /**  
          * Google

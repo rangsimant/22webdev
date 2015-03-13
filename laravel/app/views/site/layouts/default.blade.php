@@ -42,8 +42,8 @@
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
 
+		<![endif]-->
 		<!-- Favicons
 		================================================== -->
 		<link rel="aToggle navigation
@@ -80,13 +80,20 @@ pple-touch-icon-precomposed" sizes="144x144" href="{{{ asset('assets/ico/apple-t
                         @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
                         @endif
-                        <li class="{{ (Request::is('user') ? 'active' : '') }}">
-                        	<a href="{{{ URL::to('user') }}}" style="padding-top: 6px;padding-bottom: 6px;">
-	                        <img src="{{ (Auth::user()->picture != null)?Auth::user()->picture:URL::to('custom/image/22avatar.png'); }}" alt="Avatar" class="avatar-thumbnail" width="38px">
-                        	 {{{ Auth::user()->first_name." ".Auth::user()->last_name }}}
-                        	</a>
-                        </li>
-                        <li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
+    					<li class="dropdown">
+    							<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-top: 11px;padding-bottom: 9px;">
+    								 <img src="{{ (Auth::user()->picture != null)?Auth::user()->picture:URL::to('custom/image/22avatar.png'); }}" alt="Avatar" class="avatar-thumbnail" width="30px">
+									 {{{ Auth::user()->first_name." ".Auth::user()->last_name }}} 
+									 <span class="caret"></span>
+    							</a>
+    							<ul class="dropdown-menu">
+    								<li>
+    									<a href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span> Profile</a>
+    									</li>
+    								<li class="divider"></li>
+    								<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-share"></span> Logout</a></li>
+    							</ul>
+    					</li>
                         @else
                         <li  class="{{ (Request::is('user/login') ? 'active' : '') }}"><a href="{{{ URL::to('user/login') }}}">Login</a></li>
                         <li  class="{{ (Request::is('user/create') ? 'active' : '') }}"><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
@@ -100,11 +107,6 @@ pple-touch-icon-precomposed" sizes="144x144" href="{{{ asset('assets/ico/apple-t
 
 		<!-- Container -->
 		<div class="container">
-
-			<!-- Notifications -->
-			@include('notifications')
-			<!-- ./ notifications -->
-
 			<!-- Content -->
 			@yield('content')
 			<!-- ./ content -->
