@@ -65,7 +65,7 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
+			'host'     => 'thevote',
 			'database' => 'database',
 			'username' => 'root',
 			'password' => '',
