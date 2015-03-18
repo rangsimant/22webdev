@@ -1,1 +1,2 @@
-#TheVote by 22webdev.com [Rangsimant Hanwongsa]
+#TheVote by 22webdev.com 
+by [Rangsimant Hanwongsa]
