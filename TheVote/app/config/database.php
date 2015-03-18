@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'laravel',
+			'database'  => 'thevote',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
@@ -65,7 +65,7 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'thevote',
+			'host'     => 'localhost',
 			'database' => 'database',
 			'username' => 'root',
 			'password' => '',
