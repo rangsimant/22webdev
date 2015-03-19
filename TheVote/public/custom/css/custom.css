@@ -37,8 +37,8 @@
 
 .text-ranking 
 {
-  padding-bottom: 9px;
   font-weight: bold;
+  margin-top: 5px;
 }
 h3.header-ranking
 {
@@ -97,7 +97,7 @@ textarea:focus,input[type="text"]:focus
 	border: 1px solid rgb(236, 236, 236);
 	background-color: white;
 	margin-right: 0px;
-	margin-top: 5px;
+	/*margin-top: 5px;*/
 	padding: 15px;
 }
 .box-feed {
@@ -115,20 +115,32 @@ textarea:focus,input[type="text"]:focus
 	box-shadow: 0px 0px 1px -1px;
 	border: 1px solid rgb(236, 236, 236);
 	background-color: white;
-	margin-right: 5px;
-	margin-top: 5px;
+/*	margin-right: 5px;
+	margin-top: 5px;*/
+	padding: 15px;
+}
+.box-content
+{
+	box-shadow: 0px 0px 1px -1px;
+	border: 1px solid rgb(236, 236, 236);
+	background-color: white;
+	/*margin-right: 5px;*/
+	margin-bottom: 5px;
 	padding: 15px;
 }
 .box-comment
 {
-	/*box-shadow: 0px 0px 3px -2px;*/
-	/*border: 1px solid rgb(228, 228, 228);*/
-	/*background-color: rgba(250, 250, 250, 1);*/
-	  padding: 10px 0px;
+	box-shadow: 0px 0px 1px -1px;
+	border: 1px solid rgb(236, 236, 236);
+	background-color: white;
+	padding: 15px;
 }
 .box-ranking
 {
-	padding: 2.5px 15px;
+	box-shadow: 0px 0px 1px -1px;
+	border: 1px solid rgb(236, 236, 236);
+	background-color: white;
+	padding: 15px;
 }
 #page-wrapper
 {
@@ -162,6 +174,7 @@ hr
 p.content,.box-vote
 {
 	padding: 10px 0px;
+	height: 65px;
 }
 .box-vote
 {
@@ -213,6 +226,10 @@ p.content,.box-vote
   background-color: #FAFAFA;
     box-shadow: 0px 0px 1px -1px;
 }
+.comment {
+  box-shadow: 0px 0px 1px -1px;
+  border: 1px solid rgb(236, 236, 236);
+}
 .avatar-comment
 {
 	padding: 0px;
@@ -234,11 +251,49 @@ p.content,.box-vote
 {
 	font-size: 12px;
 }
-@media (max-width: 768px) {
+.navbar 
+{
+	margin-bottom: 0px;
+}
+@media (max-width: 768px) 
+{
 	.container-fluid
 	{
 		padding: 0px;
 		margin: 0px;
 	}
+	.col-md-9.col-xs-12.grid-post
+	{
+		padding-left:0px; 
+		padding-right:0px; 
+	}
+
+}
+@media (min-width: 768px)
+{
+	#page-wrapper
+	{
+	   margin: 0px; 
+	}
+
+}
+@media (min-width: 1200px)
+{
+	.grid-post
+	{
+		padding-left: 0px;
+	}
+
+}
+.grid-ranking
+{
+	background-color: white;
+	margin-top: 5px;
 }
 
+.pic-content
+{
+	background-color: rgb(247, 248, 249);
+	border: 4px solid rgb(247, 248, 249);
+	/* border-radius: 4px; */
+}

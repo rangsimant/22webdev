@@ -1,4 +1,4 @@
-@extends('site.layouts.sbadmin2')
+@extends('site.layouts.thevote_templete_v1')
 
 {{-- Content --}}
 @section('content')
