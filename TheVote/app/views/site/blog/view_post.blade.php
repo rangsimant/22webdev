@@ -120,7 +120,7 @@
 			                            <strong class="primary-font author">{{ $comment->author->first_name." ".$comment->author->last_name }}</strong>
 			                            <p class="post-time">{{{ $comment->date() }}}</p>
 			                        </div>
-			                        <span class="comment"> {{ nl2br(e($comment->content())) }} </span>
+			                        <span class="article"> {{ nl2br(e($comment->content())) }} </span>
 			                    </div>
 			                </div>
 			            </div>
