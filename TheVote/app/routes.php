@@ -104,9 +104,9 @@ Route::get('contact-us', function()
 });
 
 # Posts - Second to last set, match slug
-Route::get('{postSlug}', 'BlogController@getView');
-Route::post('{postSlug}', 'BlogController@postView');
-Route::post('feed/post', 'PostVoteController@postCreate');
+Route::get('{postSlug}', 'PostVoteController@getView');
+Route::post('{idPost}', 'PostVoteController@postView');
+// Route::post('feed/post', 'PostVoteController@postCreate');
 
 # Index Page - Last route, no matches
 Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getIndex'));
@@ -115,10 +115,14 @@ Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getInde
 Route::get('login/facebook','FacebookController@loginWithFacebook');
 Route::get('login/google','GoogleController@loginWithGoogle');
 
-Route::post('post/agree','VoteController@vote');
-Route::post('post/disagree','VoteController@worse');
-
 Route::group(array('before' => 'auth'), function()
 {
+    Route::get('post/{idPost}/{type}','VoteController@vote');
+
     Route::post('upload','BlogController@upload');
+    Route::post('feed/post','PostVoteController@postCreate');
+});
+
+Route::get('/feed/post',function(){
+    return Redirect::to('/');
 });

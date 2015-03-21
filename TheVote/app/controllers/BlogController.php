@@ -37,7 +37,7 @@ class BlogController extends BaseController {
 		// Get all the blog posts
 		$posts = $this->post->orderBy('updated_at', 'DESC')->paginate(10);
 		// Show the page
-		return View::make('site/blog/index', compact('posts'));
+		return View::make('site/blog/index', compact('posts','agree','disagree'));
 	}
 
 	/**

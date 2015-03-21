@@ -162,9 +162,23 @@ hr
 	font-size: 12px;
 	padding: 5px 0px;
 }
+#footer_total
+{
+	font-size: 12px;
+	padding: 5px 0px;
+}
 .border-top-post
 {
 	border-top: 1px solid rgb(237, 237, 237);
+}
+.header-post
+{
+	padding: 10px 15px;
+	border: 1px solid rgb(237, 237, 237);
+	border-bottom: 0px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	background-color: rgb(247, 248, 249);
 }
 .footer-post
 {
@@ -293,7 +307,22 @@ p.content,.box-vote
 
 .pic-content
 {
+  background-color: rgb(237, 240, 247);
+  border: 4px solid rgb(247, 248, 249);
+}
+.icon-footer > span a
+{
+	color: gray;
+}
+#body-user
+{
+	background-color: #EDEDED;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+.status-vote
+{
 	background-color: rgb(247, 248, 249);
-	border: 4px solid rgb(247, 248, 249);
-	/* border-radius: 4px; */
+	font-size: 12px;
 }

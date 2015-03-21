@@ -33,12 +33,13 @@
         <link rel="stylesheet" href="{{asset('theme/sb_admin_2.0/bower_components/metisMenu/dist/metisMenu.min.css')}}">
         <link rel="stylesheet" href="{{asset('theme/sb_admin_2.0/bower_components/morrisjs/morris.css')}}">
         <link rel="stylesheet" href="{{asset('theme/sb_admin_2.0/bower_components/dropzone/dist/min/dropzone.min.css')}}">
-
+        <link rel="stylesheet" href="{{asset('theme/sb_admin_2.0/bower_components/magnific-popup/dist/magnific-popup.css')}}"> 
 
         <link rel="stylesheet" href="{{asset('custom/css/custom.css')}}">
 
         <script src="{{asset('theme/sb_admin_2.0/bower_components/jquery/dist/jquery.min.js')}}"></script>
         <script src="{{asset('theme/sb_admin_2.0/bower_components/readmore-master/readmore.min.js')}}"></script>
+        <script src="{{asset('theme/sb_admin_2.0/bower_components/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
         <script src="{{asset('theme/sb_admin_2.0/bower_components/dropzone/dist/min/dropzone-amd-module.min.js')}}"></script>
 
         <!-- <script src="{{asset('theme/sb_admin_2.0/bower_components/dotdotdot-master/src/js/jquery.dotdotdot.min.js')}}"></script> -->

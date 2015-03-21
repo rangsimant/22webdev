@@ -92,7 +92,7 @@ class Post extends Eloquent {
 	 */
 	public function url()
 	{
-		return Url::to($this->slug);
+		return Url::to($this->id);
 	}
 
 	/**
@@ -117,4 +117,13 @@ class Post extends Eloquent {
         return $this->date($this->updated_at);
 	}
 
+	public function getCountAgree()
+	{
+		return 	Vote::getCountVote($this->id);
+	}
+
+	public function getCountDisAgree()
+	{
+		return 	Vote::getCountWorse($this->id);
+	}
 }

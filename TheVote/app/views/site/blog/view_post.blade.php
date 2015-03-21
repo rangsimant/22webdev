@@ -57,16 +57,21 @@
 			</div>
 			<!-- Picture Content -->
 			@if(!empty($post->attachment))
+
 			<div class="pic-content">
-				<img src="{{ $post->attachment }}" alt="" class="img-responsive" style="min-width:100%;">
-				<p>
-					<span title="Agree">{{ $agree }} <a href="">Agree </a></span>
-					<span>&bull;</span>
-					<span title="Disagree">{{ $disagree }} <a href="">Disagree </a></span>
-					<span>&bull;</span>
-					<span title="Comment">{{ $comments->count() }} <a href="">Comments</a></span>
-				</p>
+				<a href="{{ $post->attachment }}" class="lightbox-image" title="{{ $post->content() }}"><img src="{{ $post->attachment }}" alt="" class="img-responsive"></a>
 			</div>
+				<div class="col-md-12 status-vote">
+					<p style="padding: 10px 0px 0px;">
+						<span title="Agree">{{ $agree }} <a href="{{ URL::to('post/'.$post->id.'/agree') }}">Agree </a></span>
+						<span>&bull;</span>
+						<span title="Disagree">{{ $disagree }} <a href="{{ URL::to('post/'.$post->id.'/disagree') }}">Disagree </a></span>
+						<span>&bull;</span>
+						<span title="Comment">{{ $comments->count() }} <a href="">Comments</a></span>
+					</p>
+			</div>
+			
+
 			@endif
         </div>
 	</div>
@@ -77,23 +82,13 @@
 		
 			<div class="box-vote text-center">
 				@if (Auth::check())
-					{{ Form::open(array('url' => URL::to('post/agree'))) }}
 					<div class="col-md-6 col-xs-6">
-						{{ Form::hidden('idPost',$post->id) }}
-						{{ Form::hidden('idUser',Auth::user()->id) }}
-						{{ Form::hidden('slug',$post->slug) }}
-						<button type="submit" class="btn btn-agree"><i class="fa fa-thumbs-o-up fa-2x" title="Agree"></i></button>
+						<a href="{{ URL::to('post/'.$post->id.'/agree') }}" class="btn btn-agree"><i class="fa fa-thumbs-o-up fa-2x" title="Agree"></i></a>
 					</div>
-					{{ Form::close() }}
 
-					{{ Form::open(array('url' => URL::to('post/disagree'))) }}
-						{{ Form::hidden('idPost',$post->id) }}
-						{{ Form::hidden('idUser',Auth::user()->id) }}
-						{{ Form::hidden('slug',$post->slug) }}
-						<div class="col-md-6 col-xs-6">
-							<button type="submit" class="btn btn-disagree"><i class="fa fa-thumbs-o-down fa-2x" title="Disagree"></i></button>
-						</div>
-					{{ Form::close() }}
+					<div class="col-md-6 col-xs-6">
+						<a href="{{ URL::to('post/'.$post->id.'/disagree') }}" class="btn btn-disagree"><i class="fa fa-thumbs-o-down fa-2x" title="Disagree"></i></a>
+					</div>
 				@else
 					Please <a href="{{ URL::to('user/login') }}">Login</a> before Vote.
 				@endif
@@ -108,7 +103,7 @@
 		<div class="row">
 			@if ($comments->count())
 				@foreach ($comments as $comment)
-				<div class="row split-comment">
+				<div class="row split-comment" id="comments">
 					<div class="col-md-12">
 						<div class="box-comment">
 							<div class="left clearfix">
@@ -116,7 +111,7 @@
 									<img class="" src="{{ !empty($comment->author->picture)?$comment->author->picture:'http://placehold.it/60x60' }}" alt="" style="max-width:30px">
 			                    </span>
 			                    <div class="clearfix">
-			                        <div class="header">
+			                        <div class="header" style="margin-top: -3px;">
 			                            <strong class="primary-font author">{{ $comment->author->first_name." ".$comment->author->last_name }}</strong>
 			                            <p class="post-time">{{{ $comment->date() }}}</p>
 			                        </div>
@@ -177,6 +172,32 @@
 		  labels: ['<i class="fa fa-thumbs-o-up"></i>','<i class="fa fa-thumbs-o-down"></i>'],
 		  barColors: ['#03A9F4','#424242'],
 		  resize: true
+		});
+
+		$('.lightbox-image').magnificPopup({ 
+			type: 'image',
+			image: {
+			  markup: '<div class="mfp-figure">'+
+			            '<div class="mfp-close"></div>'+
+			            '<div class="mfp-img"></div>'+
+			            '<div class="mfp-bottom-bar">'+
+			              '<div class="mfp-title"></div>'+
+			              '<div class="mfp-counter"></div>'+
+			            '</div>'+
+			          '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+			  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor. 
+			  
+			  titleSrc: 'title', // Attribute of the target element that contains caption for the slide.
+			  // Or the function that should return the title. For example:
+			  // titleSrc: function(item) {
+			  //   return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+			  // }
+
+			  verticalFit: true, // Fits image in area vertically
+
+			  tError: '<a href="%url%">The image</a> could not be loaded.' // Error message
+			}
 		});
 	})
 

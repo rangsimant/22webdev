@@ -5,49 +5,25 @@
 class VoteController extends BaseController
 {
 	
-	public function vote()
+	public function vote($idPost,$type)
 	{
-		$slug = Input::get('slug');
-		if (!empty(Input::get('idPost')) && !empty(Input::get('idUser'))) 
+		$post = Post::find($idPost);
+		if (!empty($post)) 
 		{
-			$idPost = Input::get('idPost');
-			$idUser = Input::get('idUser');
 			$data = array(
 				"vote"=>1,
-				"type"=>"agree",
+				"type"=>$type,
 				"Post"=>$idPost,
-				"User"=>$idUser
+				"User"=>Auth::user()->id
 				);
 			Vote::create($data);
 
-			return Redirect::to($slug."#vote");
+			return Redirect::back();
 		}
 		else
 		{
-			return Redirect::to($slug."#vote")->with('error', 'Please login before Vote.');
+			return Redirect::back()->with('error', 'Please login before Vote.');
 		}
 		
-	}
-
-	public function worse()
-	{
-				$slug = Input::get('slug');
-		if (!empty(Input::get('idPost')) && !empty(Input::get('idUser'))) 
-		{
-			$idPost = Input::get('idPost');
-			$idUser = Input::get('idUser');
-			$data = array(
-				"vote"=>1,
-				"type"=>"disagree",
-				"Post"=>$idPost,
-				"User"=>$idUser
-				);
-			Vote::create($data);
-			return Redirect::to($slug."#vote");
-		}
-		else
-		{
-			return Redirect::to($slug."#vote")->with('error', 'Please login before Vote.');
-		}
 	}
 }
