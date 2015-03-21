@@ -301,7 +301,7 @@ p.content,.box-vote
 	{
 		position: absolute;
 		right: 0px;
-		padding-left: 5px;
+		padding-left: 3px;
 	}
 }
 @media (min-width: 1200px)
@@ -342,4 +342,40 @@ p.content,.box-vote
 form.form-horizontal.ng-pristine.ng-valid
 {
 	margin-bottom: 5px;
+}
+
+div.tagsinput {
+	border: 0px; 
+	background: #FFF;
+	padding: 5px;
+	/* width: 300px; */
+	/* height: 100px; */
+	overflow-y: auto;
+}
+div.tagsinput span.tag 
+{
+	border: 0px solid #61B4FC;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	display: block;
+	float: left;
+	padding: 0px;
+	text-decoration: none;
+	background: #D4EAFC;
+	color: #08A1FF;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	font-family: helvetica;
+	font-size: 13px;
+}
+div.tagsinput span.tag a {
+  font-weight: 700;
+  color: #08A1FF;
+  text-decoration: none;
+  font-size: 11px;
+  padding-right: 5px;
+}
+span.tag>span
+{
+	padding: 0px 0px 0px 5px;
 }

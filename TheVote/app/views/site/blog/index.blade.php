@@ -20,7 +20,7 @@
 		<div class="box-input-post">
 				{{ Form::text('title',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Title')) }}
 				{{ Form::textarea('content',Input::old("content", isset($post) ? $post->content : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Write a Post.','width'=>'100%')) }}
-				{{ Form::text('keywords',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Hashtag')) }}
+				{{ Form::text('keywords',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Keywords', 'id' => 'keywords')) }}
 			<div>
 				<div class="border-top-post footer-post icon-footer">
 					<span><a href="" title="Attachment" class="btn btn-xs"><i class="fa fa-paperclip"></i></a></span>
@@ -78,6 +78,15 @@
 	{
 		var textarea = $('textarea');
 		autosize(textarea);
+		$('#keywords').tagsInput({
+			'width': '100%', 
+			'min-height': '50px', 
+			'height': '50px',
+			'interactive':true,
+			'delimiter': [','],
+			'defaultText': 'Keywords',
+			'placeholderColor' : 'rgb(169, 169, 169)'
+			});
 	})
 </script>
 @stop
