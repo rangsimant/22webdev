@@ -57,22 +57,19 @@
 			</div>
 			<!-- Picture Content -->
 			@if(!empty($post->attachment))
-
 			<div class="pic-content">
 				<a href="{{ $post->attachment }}" class="lightbox-image" title="{{ $post->content() }}"><img src="{{ $post->attachment }}" alt="" class="img-responsive"></a>
 			</div>
-				<div class="col-md-12 status-vote">
-					<p style="padding: 10px 0px 0px;">
-						<span title="Agree">{{ $agree }} <a href="{{ URL::to('post/'.$post->id.'/agree') }}">Agree </a></span>
-						<span>&bull;</span>
-						<span title="Disagree">{{ $disagree }} <a href="{{ URL::to('post/'.$post->id.'/disagree') }}">Disagree </a></span>
-						<span>&bull;</span>
-						<span title="Comment">{{ $comments->count() }} <a href="">Comments</a></span>
-					</p>
-			</div>
-			
-
 			@endif
+			<div class="col-md-12 status-vote">
+				<p style="padding: 10px 0px 0px;">
+					<span title="Agree">{{ $agree }} <a href="{{ URL::to('post/'.$post->id.'/agree') }}">Agree </a></span>
+					<span>&bull;</span>
+					<span title="Disagree">{{ $disagree }} <a href="{{ URL::to('post/'.$post->id.'/disagree') }}">Disagree </a></span>
+					<span>&bull;</span>
+					<span title="Comment">{{ $comments->count() }} <a href="">Comments</a></span>
+				</p>
+			</div>
         </div>
 	</div>
 
