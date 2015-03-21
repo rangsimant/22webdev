@@ -4,7 +4,8 @@
 @section('content')
 
 <!-- Post -->
-<div class="">
+@if(Auth::check())
+<div>
 	<form class="form-horizontal" method="post" action="{{ URL::to('feed/post') }}" autocomplete="off">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
@@ -30,6 +31,7 @@
 		</div>
 	</form>
 </div>
+@endif
 <!-- ./ Post -->
 
 @foreach ($posts as $post)
@@ -45,7 +47,7 @@
 	<!-- Post Content -->
 	<div class="row">
 		<div class="col-md-4">
-			<a href="{{{ $post->url() }}}" class="thumbnail"><img src="{{ !empty($post->attachment)?$post->attachment:asset('assets/ico/thrvote-b.png') }}" alt="" style="max-height:400px"></a>
+			<a href="{{{ $post->url() }}}" class="thumbnail"><img src="{{ !empty($post->attachment)?$post->attachment:asset('custom/image/no-image_800x400.png') }}" alt="" style="max-height:400px"></a>
 			<div id="footer_total">
 				<span  class="fa fa-thumbs-o-up"></span> <a href="{{ URL::to('post/'.$post->id.'/agree') }}" title="Agree">{{ $post->getCountAgree() }} Agree</a>
 				<span  class="fa fa-thumbs-o-down"></span> <a href="{{ URL::to('post/'.$post->id.'/disagree') }}" title="Disagree">{{ $post->getCountDisAgree() }} Disagree</a>
@@ -59,7 +61,7 @@
 				<p><a class="btn btn-outline btn-primary btn-xs" href="{{{ $post->url() }}}">Read more</a></p>
 			</p>
 			<p id="footer" class="">				
-				<span><img src="{{ $post->author->picture }}" class="" style="max-width:24px"></span> <span class="muted author">{{{ $post->author->first_name." ".$post->author->last_name }}}</span>
+				<span><img src="{{ !empty($post->author->picture)?$post->author->picture:URL::to('custom/image/22avatar.png') }}" class="" style="max-width:24px"></span> <span class="muted author">{{{ $post->author->first_name." ".$post->author->last_name }}}</span>
 				| {{{ $post->date() }}}
 			</p>
 		</div>

@@ -77,7 +77,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-3 col-xs-12">
+		<div class="col-md-3 col-xs-12 group-vote">
 			<div id="vote" class="box-post" style="position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height:325px"></div>
 		
 			<div class="box-vote text-center">
@@ -108,7 +108,7 @@
 						<div class="box-comment">
 							<div class="left clearfix">
 			                    <span class="pull-left img-author">
-									<img class="" src="{{ !empty($comment->author->picture)?$comment->author->picture:'http://placehold.it/60x60' }}" alt="" style="max-width:30px">
+									<img class="" src="{{ !empty($comment->author->picture)?$comment->author->picture:asset('custom/image/22avatar.png') }}" alt="" style="max-width:30px">
 			                    </span>
 			                    <div class="clearfix">
 			                        <div class="header" style="margin-top: -3px;">
