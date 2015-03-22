@@ -64,7 +64,7 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/fav-TheVite.ico') }}}">
 	</head>
 
-	<body ng-controller="changepage">
+	<body>
         <nav class="navbar navbar-default navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -85,6 +85,7 @@
                     <li class="dropdown pull-right">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-top: 11px;padding-bottom: 9px;">
                                  <img src="{{ (Auth::user()->picture != null)?Auth::user()->picture:URL::to('custom/image/22avatar.png'); }}" alt="Avatar" class="avatar-thumbnail" width="30px" title="{{{ Auth::user()->first_name." ".Auth::user()->last_name }}} ">
+                                 <span>{{ Auth::user()->first_name." ".Auth::user()->last_name }}</span>
                                  <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -236,8 +237,10 @@
         <script src="{{asset('theme/sb_admin_2.0/dist/js/sb-admin-2.js')}}"></script>
         <script src="{{asset('theme/sb_admin_2.0/bower_components/metisMenu/dist/metisMenu.min.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+
         <script src="{{asset('custom/js/controller.js')}}"></script>
         <script src="{{asset('custom/js/app.js')}}"></script>
+
         <script src="{{asset('custom/js/custom.js')}}"></script>
         @yield('scripts')
 

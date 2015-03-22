@@ -78,4 +78,9 @@ class Comment extends Eloquent {
     {
         return $this->date($this->updated_at);
     }
+
+    public static function getCountComments($idPost)
+    {
+        return self::where('post_id', $idPost)->count();
+    }
 }

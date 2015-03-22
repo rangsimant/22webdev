@@ -40,6 +40,8 @@ class Vote extends Eloquent
 				$vote->save();
 				Log::debug('Vote Disagree +1 Success @Post = '.$idPost.' by User ID = '.$idUser);
 			}
+
+			$post->touch();
 			return true;
 		}
 		else

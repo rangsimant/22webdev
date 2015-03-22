@@ -5,10 +5,10 @@
 
 <!-- Post -->
 @if(Auth::check())
-<div>
-	<form class="form-horizontal" method="post" action="{{ URL::to('feed/post') }}" autocomplete="off">
+<div ng-controller="createPost">
+	<form name="form" ng-submit="postCreate()">
 		<!-- CSRF Token -->
-		<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+		<input type="hidden" name="_token" value="{{ csrf_token() }}" ng-model="csrf"/>
 		<div class="header-post">
         	<strong>What are you give wanted to vote.</strong>
             <div class="btn-group pull-right">
@@ -18,9 +18,9 @@
             </div>
         </div>
 		<div class="box-input-post">
-				{{ Form::text('title',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Title')) }}
-				{{ Form::textarea('content',Input::old("content", isset($post) ? $post->content : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Write a Post.','width'=>'100%')) }}
-				{{ Form::text('keywords',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Keywords', 'id' => 'keywords')) }}
+				{{ Form::text('title',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Title','ng-model'=>'title')) }}
+				{{ Form::textarea('content',Input::old("content", isset($post) ? $post->content : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Write a Post.','width'=>'100%','ng-model'=>'content')) }}
+				{{ Form::text('keywords',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Keywords', 'id' => 'keywords','ng-model'=>'keywords')) }}
 			<div>
 				<div class="border-top-post footer-post icon-footer">
 					<span><a href="" title="Attachment" class="btn btn-xs"><i class="fa fa-paperclip"></i></a></span>
@@ -34,45 +34,58 @@
 @endif
 <!-- ./ Post -->
 
-@foreach ($posts as $post)
-<div class="col-md-12 box-feed">
-	<!-- Post Title -->
-	<div class="row">
-		<div class="col-md-8">
-			<h4></h4>
-		</div>
-	</div>
-	<!-- ./ post title -->
 
-	<!-- Post Content -->
-	<div class="row">
-		<div class="col-md-4">
-			<a href="{{{ $post->url() }}}" class="thumbnail"><img src="{{ !empty($post->attachment)?$post->attachment:asset('custom/image/no-image_800x400.png') }}" alt="" style="max-height:400px"></a>
-			<div id="footer_total">
-				<span  class="fa fa-thumbs-o-up"></span> <a href="{{ URL::to('post/'.$post->id.'/agree') }}" title="Agree">{{ $post->getCountAgree() }} Agree</a>
-				<span  class="fa fa-thumbs-o-down"></span> <a href="{{ URL::to('post/'.$post->id.'/disagree') }}" title="Disagree">{{ $post->getCountDisAgree() }} Disagree</a>
-				<span class="fa fa-comment-o"></span> <a href="{{{ $post->url() }}}#comments" title="Comments">{{$post->comments()->count()}} Comments</a>
+<div ng-controller="loadfeed" ng-init="baseUrl='<?php echo URL::to('/'); ?>'">
+	<div class="col-md-12 box-feed" ng-repeat="feed in feeds" ng-cloak>
+		<!-- Post Title -->
+		<div class="row">
+			<div class="col-md-8">
+				<h4></h4>
 			</div>
 		</div>
-		<div class="col-md-8">
-			<h4><strong><a href="{{{ $post->url() }}}">{{ String::title($post->title) }}</a></strong></h4>
-			<p class="article">
-				{{ String::tidy(Str::limit($post->content, 200)) }}
-				<p><a class="btn btn-outline btn-primary btn-xs" href="{{{ $post->url() }}}">Read more</a></p>
-			</p>
-			<p id="footer" class="">				
-				<span><img src="{{ !empty($post->author->picture)?$post->author->picture:URL::to('custom/image/22avatar.png') }}" class="" style="max-width:24px"></span> <span class="muted author">{{{ $post->author->first_name." ".$post->author->last_name }}}</span>
-				| {{{ $post->date() }}}
-			</p>
-		</div>
-	</div>
-	<!-- ./ post content -->
+		<!-- ./ post title -->
 
+		<!-- Post Content -->
+		<div class="row">
+			<div class="col-md-4">
+				<a href="{{ URL::to('/') }}/@{{ feed.id }}" class="thumbnail">
+					<img ng-if="feed.attachment" src="@{{ feed.attachment }}" alt="" style="max-height:400px">
+					<img ng-if="!feed.attachment" src="{{ asset('custom/image/no-image_800x400.png') }}" alt="" style="max-height:400px">
+				</a>
+				<div id="footer_total">
+					<span  class="fa fa-thumbs-o-up"></span> <a href="{{ URL::to('post') }}/@{{ feed.id }}/agree" title="Agree">@{{ feed.agree }} Agree</a>
+					<span  class="fa fa-thumbs-o-down"></span> <a href="{{ URL::to('post') }}/@{{ feed.id }}/disagree" title="Disagree">@{{ feed.disagree }} Disagree</a>
+					<span class="fa fa-comment-o"></span> <a href="{{ URL::to('/') }}/@{{ feed.id }}#comments" title="Comments">@{{ feed.comment }} Comments</a>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<h4><strong><a href="{{ URL::to('/') }}/@{{ feed.id }}">@{{ feed.title }}</a></strong></h4>
+				<p class="article">
+					@{{ feed.content | limitTo:200 }}&hellip;
+				<p>
+				<a class="btn btn-outline btn-primary btn-xs" href="{{ URL::to('/') }}/@{{ feed.id }}">Read more</a></p>
+				</p>
+				<p id="footer" class="">				
+					<span>
+						<img ng-if="feed.picture" src="@{{ feed.picture }}" class="" style="max-width:24px">
+						<img ng-if="!feed.picture" src="{{ URL::to('custom/image/22avatar.png') }}" class="" style="max-width:24px">
+					</span> 
+					<span class="muted author">@{{ feed.first_name}} @{{ feed.last_name }}</span>
+					| @{{ feed.time_ago }}
+				</p>
+			</div>
+		</div>
+		<!-- ./ post content -->
+
+	</div>
 </div>
-@endforeach
-<div class="col-md-12 row">
-	{{ $posts->links() }}
+<div class="col-md-12">
+<div class="row box-loadmore ">
+	<a href="#">Load More</a>
 </div>
+</div>
+
+
 <script type="text/javascript">
 	$(function()
 	{
@@ -85,6 +98,7 @@
 			'interactive':true,
 			'delimiter': [','],
 			'defaultText': 'Keywords',
+			// 'maxChars' : 50,
 			'placeholderColor' : 'rgb(169, 169, 169)'
 			});
 	})

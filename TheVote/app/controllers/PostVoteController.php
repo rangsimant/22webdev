@@ -52,6 +52,7 @@ class PostVoteController extends BaseController {
         return View::make('site/blog/view_post', compact('post', 'comments', 'canComment','agree','disagree'));
     }
 
+    // create new post
     public function postCreate()
 	{
         // Declare the rules for the form validation
@@ -82,17 +83,21 @@ class PostVoteController extends BaseController {
             if($this->post->save())
             {
                 // Redirect to the new blog post page
+                Log::debug("Create a new post \n".$this->post);
                 return Redirect::to('/')->with('success', Lang::get('admin/blogs/messages.create.success'));
             }
 
             // Redirect to the blog post create page
+            Log::error("Error create post \n".$this->post);
             return Redirect::to('/')->with('error', Lang::get('admin/blogs/messages.create.error'));
         }
 
         // Form validation failed
+        Log::warning("Validation failed create post \n",array($validator));
         return Redirect::to('/')->withInput()->withErrors($validator);
 	}
 
+    // create new comment
     public function postView($idPost)
     {
 

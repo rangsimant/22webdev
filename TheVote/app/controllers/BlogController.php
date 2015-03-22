@@ -26,6 +26,12 @@ class BlogController extends BaseController {
         $this->post = $post;
         $this->user = $user;
     }
+
+    public function loadfeed()
+    {
+    	$post = new Post();
+    	return $post->getFeedsAll();
+    }
     
 	/**
 	 * Returns all the blog posts.

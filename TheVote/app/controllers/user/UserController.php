@@ -61,7 +61,7 @@ class UserController extends BaseController {
             }
 
             return Redirect::to('user/login')
-                ->with('success', Lang::get('user/user.user_account_created'));
+                ->with('success', Lang::get('user/user.user_account_created')." Please check your email for Confirm Account.");
         } else {
             $error = $user->errors()->all(':message');
 

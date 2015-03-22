@@ -51,13 +51,8 @@
 
                     <div class="controls">
                       <button tabindex="3" type="submit" class="btn btn-success">{{{ Lang::get('confide::confide.login.submit') }}}</button>
-      	              <a href="{{ URL::to('login/facebook') }}"class="btn btn-social btn-facebook">
-				          <i class="fa fa-facebook"></i> Sign in with Facebook
-				      </a>
-
-				      <a href="{{ URL::to('login/google') }}"class="btn btn-social btn-google-plus">
-                          <i class="fa fa-google-plus"></i> Sign in with Google
-                      </a>
+                      <a href="{{ URL::to('login/facebook') }}" class="btn btn-social-icon btn-facebook" title="Login with Facebook"><i class="fa fa-facebook"></i></a>
+                      <a href="{{ URL::to('login/google') }}" class="btn btn-social-icon btn-google-plus" title="Login with Google+"><i class="fa fa-google-plus"></i></a>
 
                     </div>
                 </div>

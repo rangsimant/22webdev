@@ -126,4 +126,21 @@ class Post extends Eloquent {
 	{
 		return 	Vote::getCountWorse($this->id);
 	}
+
+	public function getFeedsAll()
+	{
+		$feeds = DB::table('posts')
+							->select('posts.id','posts.title','posts.content','posts.attachment','users.first_name','users.last_name','users.picture','posts.created_at','posts.updated_at')
+							->join('users', 'posts.user_id', '=', 'users.id')
+							->orderBy('updated_at', 'DESC')
+							->get();
+
+		foreach ($feeds as $key => $feed) {
+			$feed->time_ago = $this->date(new Carbon($feed->created_at));
+			$feed->agree = Vote::getCountVote($feed->id);
+			$feed->disagree = Vote::getCountWorse($feed->id);
+			$feed->comment = Comment::getCountComments($feed->id);
+		}
+		return $feeds;
+	}
 }

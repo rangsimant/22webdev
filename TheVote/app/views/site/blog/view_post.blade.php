@@ -56,7 +56,7 @@
 				</p>
 			</div>
 			<!-- Picture Content -->
-			@if(!empty($post->attachment))
+			@if(!empty($post->attachment)) 
 			<div class="pic-content">
 				<a href="{{ $post->attachment }}" class="lightbox-image" title="{{ $post->content() }}"><img src="{{ $post->attachment }}" alt="" class="img-responsive"></a>
 			</div>
@@ -155,6 +155,7 @@
 		new Morris.Bar({
 		  // ID of the element in which to draw the chart.
 		  element: 'vote',
+		  hideHover: 'auto',
 		  // Chart data records -- each entry in this array corresponds to a point on
 		  // the chart.
 		  data: [
