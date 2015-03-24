@@ -70,6 +70,7 @@ textarea:focus,input[type="text"]:focus
 {
 	outline: none;
 }
+
 .box-text
 {
 	border-radius: 0px;
@@ -170,6 +171,7 @@ hr
 {
 	font-size: 12px;
 	padding: 5px 0px;
+	color:#ACACAC;
 }
 #footer_total
 {
@@ -389,8 +391,15 @@ span.tag>span
 {
 	padding: 0px 0px 0px 5px;
 }
-a:focus, a:hover 
+a:hover 
 {
   color: #FC356A;
   text-decoration: none;
+}
+
+.post-loading
+{
+	margin-right: 5px;
+	max-height: 20px;
+	max-width: 20px;
 }

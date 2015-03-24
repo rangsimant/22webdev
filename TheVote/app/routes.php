@@ -116,10 +116,9 @@ Route::get('login/google','GoogleController@loginWithGoogle');
 
 Route::group(array('before' => 'auth'), function()
 {
-    Route::get('post/{idPost}/{type}','VoteController@vote');
-
     Route::post('upload','BlogController@upload');
     Route::post('api/newpost','PostVoteController@postCreate');
+    Route::post('api/vote','VoteController@vote');
 });
 
 Route::get('/feed/post',function(){
@@ -129,3 +128,4 @@ Route::get('/feed/post',function(){
 
 // Route For AngularJS
 Route::get('load/feeds','BlogController@loadfeed');
+Route::get('api/{idPost}/{type}','VoteController@voteCount');

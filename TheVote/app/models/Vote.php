@@ -15,6 +15,17 @@ class Vote extends Eloquent
 	{
 		return self::whereRaw("Post = '".$idPost."' AND Type ='disagree'")->count();
 	}
+
+	public static function getCountVoteAll($idPost,$type)
+	{
+		$agree = self::whereRaw("Post = '".$idPost."' AND Type ='agree'")->count();
+		$disagree = self::whereRaw("Post = '".$idPost."' AND Type ='disagree'")->count();
+		$data = array(
+			'agree' => $agree,
+			'disagree' => $disagree
+			);
+		return $data;
+	}
 	public static function postVote($idPost,$type)
 	{
 		$post = Post::find($idPost);

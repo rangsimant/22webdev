@@ -3,18 +3,16 @@
 * 
 */
 class VoteController extends BaseController
-{
-	
-	public function vote($idPost,$type)
+{	
+	public function vote()
 	{
+		$idPost = Input::get('idPost');
+		$type = Input::get('type');
 		$vote = Vote::postVote($idPost,$type);
-		if ($vote) 
-		{
-			return Redirect::back();
-		}
-		else
-		{
-			return Redirect::back()->with('error', 'Please login before Vote.');
-		}
+	}
+
+	public function voteCount($idPost,$type)
+	{
+		return Vote::getCountVoteAll($idPost,$type);
 	}
 }

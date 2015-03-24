@@ -136,7 +136,8 @@ class Post extends Eloquent {
 							->get();
 
 		foreach ($feeds as $key => $feed) {
-			$feed->time_ago = $this->date(new Carbon($feed->created_at));
+			$feed->created_time_ago = $this->date(new Carbon($feed->created_at));
+			$feed->updated_time_ago = $this->date(new Carbon($feed->updated_at));
 			$feed->agree = Vote::getCountVote($feed->id);
 			$feed->disagree = Vote::getCountWorse($feed->id);
 			$feed->comment = Comment::getCountComments($feed->id);
