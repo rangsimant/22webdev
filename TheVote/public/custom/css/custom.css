@@ -403,3 +403,9 @@ a:hover
 	max-height: 20px;
 	max-width: 20px;
 }
+
+.mfp-image-holder .mfp-content
+{
+	max-width: 1000px;
+	min-width: 500px;
+}
