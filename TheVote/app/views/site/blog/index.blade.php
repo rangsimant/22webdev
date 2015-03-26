@@ -19,7 +19,7 @@
             <span class="pull-right"><img src="{{ asset('custom/image/loading/20.gif') }}" class="post-loading" border="0px" hidden> </span>
         </div>
 		<div class="box-input-post">
-				{{ Form::text('title',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Title','ng-model'=>'title')) }}
+				{{ Form::text('title',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Title','ng-model'=>'title', 'maxlength' => 100)) }}
 				{{ Form::textarea('content',Input::old("content", isset($post) ? $post->content : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Write a Post.','width'=>'100%','ng-model'=>'content')) }}
 				{{ Form::text('keywords',Input::old("title", isset($post) ? $post->title : null),array('class'=>'clear-border-input','rows'=>'2','cols'=>'0','placeholder'=>'Keywords', 'id' => 'keywords','ng-model'=>'keywords')) }}
 			<div>
@@ -31,6 +31,8 @@
 			</div>
 		</div>
 	</form>
+
+	@include('site.blog.modal_post_alert')
 </div>
 @endif
 <!-- ./ Post -->
@@ -59,6 +61,21 @@
 					</div>
 				</div>
 				<div class="col-md-8">
+
+					<!-- post edit -->
+					<div class="btn-group pull-right">
+		                <button type="button" class="btn btn-default btn-xs btn-post-edit dropdown-toggle" data-toggle="dropdown">
+		                    <i class="fa fa-chevron-down"></i>
+		                </button>
+		                <ul class="dropdown-menu dropdown-menu-post-edit" role="menu" aria-labelledby="drop3">
+			                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="edit(feed.id)"><i class="fa fa-pencil-square-o"></i> Edit</a></li>
+			                <li role="presentation" class="divider"></li>
+			            	<li role="presentation"><a type="button" data-toggle="modal" data-target="#alertDelete_@{{ feed.id }}"><i class="fa fa-trash-o"></i> Trash</a></li>
+			            </ul>
+		            </div>
+		            @include('site.blog.modal_confirm_delete')
+		            <!-- ./ post edit -->
+
 					<h4><strong><a href="{{ URL::to('/') }}/@{{ feed.id }}">@{{ feed.title }}</a></strong></h4>
 					<p class="article">
 						@{{ feed.content | limitTo:200 }}&hellip;

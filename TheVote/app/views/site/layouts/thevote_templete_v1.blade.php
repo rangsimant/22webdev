@@ -238,7 +238,8 @@
         <script src="{{asset('theme/sb_admin_2.0/bower_components/metisMenu/dist/metisMenu.min.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
-        <script src="{{asset('custom/js/controller.js')}}"></script>
+        <script src="{{asset('custom/js/feed.js')}}"></script>
+        <script src="{{asset('custom/js/viewfeed.js')}}"></script>
         <script src="{{asset('custom/js/app.js')}}"></script>
 
         <script src="{{asset('custom/js/custom.js')}}"></script>

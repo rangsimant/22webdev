@@ -118,6 +118,7 @@ Route::group(array('before' => 'auth'), function()
 {
     Route::post('upload','BlogController@upload');
     Route::post('api/newpost','PostVoteController@postCreate');
+    Route::post('api/post/delete','PostVoteController@postDelete');
     Route::post('api/vote','VoteController@vote');
 });
 
@@ -129,3 +130,4 @@ Route::get('/feed/post',function(){
 // Route For AngularJS
 Route::get('load/feeds','BlogController@loadfeed');
 Route::get('api/{idPost}/{type}','VoteController@voteCount');
+Route::get('api/view/{idPost}','PostVoteController@getView');

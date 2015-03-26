@@ -1,0 +1,39 @@
+Time : 18:39:12
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2147483647' for key 'sd_Author_UNIQUE'
+Raw SQL : INSERT INTO social_data(sd_social_id,sd_body,sd_type,sd_channel,created_at,updated_at,sd_Author) 
+						Value(:sd_social_id, :sd_body, :sd_type, :sd_channel, :created_at, :updated_at, :sd_Author)
+
+Time : 18:32:56
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT IGNORE author(aut_social_id, aut_name, created_at, updated_at)
+						Value(:aut_social_id, :aut_name, :created_at, :updated_at)
+
+Time : 18:31:31
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT IGNORE author(aut_social_id, aut_name, created_at, updated_at)
+						Value(:aut_social_id, :aut_name, :created_at, :updated_at)
+
+Time : 18:22:45
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT IGNORE author(aut_social_id, aut_name, created_at, updated_at)
+						Value(:aut_social_id, :aut_name, :created_at, :updated_at)
+
+Time : 18:18:36
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT IGNORE author(aut_social_id, aut_name, created_at, updated_at)
+						Value(:aut_social_id, :aut_name, :created_at, :updated_at)
+
+Time : 18:18:21
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '221317851322226_1401596286627704' for key 'sd_social_id_UNIQUE'
+Raw SQL : INSERT INTO social_data(sd_social_id,sd_body,sd_type,sd_channel,created_at,updated_at,sd_Author) 
+						Value(:sd_social_id, :sd_body, :sd_type, :sd_channel, :created_at, :updated_at, :sd_Author)
+
+Time : 18:15:54
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2147483647' for key 'aut_social_id_UNIQUE'
+Raw SQL : INSERT INTO author(aut_social_id, aut_name, created_at, updated_at)
+						Value(:aut_social_id, :aut_name, :created_at, :updated_at)
+
+Time : 18:06:55
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`22webdev_storage`.`social_data`, CONSTRAINT `sd_Author_fk` FOREIGN KEY (`sd_Author`) REFERENCES `author` (`aut_social_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Raw SQL : INSERT INTO social_data(sd_social_id,sd_body,sd_type,sd_channel,created_at,updated_at,sd_Author) 
+						Value(:sd_social_id, :sd_body, :sd_type, :sd_channel, :created_at, :updated_at, :sd_Author)

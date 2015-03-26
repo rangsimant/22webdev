@@ -30,6 +30,7 @@
 
 {{-- Content --}}
 @section('content')
+<div ng-controller="viewfeed" ng-init="baseUrl='<?php echo URL::to('/'); ?>'">
 	<div class="col-md-9 col-xs-12">
 		<div class="box-content row">
 			<div class="box-author">
@@ -63,11 +64,9 @@
 			@endif
 			<div class="col-md-12 status-vote">
 				<p style="padding: 10px 0px 0px;">
-					<span title="Agree">{{ $agree }} <a href="{{ URL::to('post/'.$post->id.'/agree') }}">Agree </a></span>
-					<span>&bull;</span>
-					<span title="Disagree">{{ $disagree }} <a href="{{ URL::to('post/'.$post->id.'/disagree') }}">Disagree </a></span>
-					<span>&bull;</span>
-					<span title="Comment">{{ $comments->count() }} <a href="">Comments</a></span>
+					<span  class="fa fa-thumbs-o-up"></span> <a href="" title="Agree"><span ng-click="votePost('{{ $post->id }}','agree')" ><span class="{{ $post->id }}_agree">{{ $agree }}</span> Agree</span></a>
+						<span  class="fa fa-thumbs-o-down"></span> <a href="" title="Disagree"><span ng-click="votePost('{{ $post->id }}','disagree')"><span class="{{ $post->id }}_disagree">{{ $disagree }}</span> Disagree</span></a>
+						<span class="fa fa-comment-o"></span> <a href="{{ URL::to('/') }}/{{ $post->id }}#comments" title="Comments">{{ $comments->count() }} Comments</a>
 				</p>
 			</div>
         </div>
@@ -124,9 +123,7 @@
 			@endif
 		</div>
 	</div>
-	
-	<div class="col-md-9">
-	</div>
+</div>
 
 
 

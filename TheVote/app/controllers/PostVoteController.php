@@ -142,4 +142,22 @@ class PostVoteController extends BaseController {
         return Redirect::to($idPost)->withInput()->withErrors($validator);
     }
 
+    public function postDelete()
+    {
+        $idPost = Input::get('idPost');
+        // $idPost = '137';
+        $post = Post::find($idPost);
+        $affectedRow = $post->delete();
+        if ($affectedRow) 
+        {
+            Log::debug('Deleted Post ID: '.$idPost.' Success.');
+            return 'Deleted Post ID: '.$idPost.' Success.';
+        }
+        else
+        {
+            Log::error('Deleted Post ID: '.$idPost.' Fail.');
+            return 'Deleted Post ID: '.$idPost.' Fail.';
+        }
+    }
+
 }
