@@ -60,6 +60,46 @@
 	</head>
 
 	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="" href="{{ URL::to('/') }}"><img src="{{{ asset('assets/ico/thrvote-b.png') }}}" class="navbar-brand"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                @if (Auth::check())
+                    @if (Auth::user()->hasRole('admin'))
+                    <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
+                    @endif
+                    <li class="dropdown pull-right">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-top: 11px;padding-bottom: 9px;">
+                                 <img src="{{ (Auth::user()->picture != null)?Auth::user()->picture:URL::to('custom/image/22avatar.png'); }}" alt="Avatar" class="avatar-thumbnail" width="30px" title="{{{ Auth::user()->first_name." ".Auth::user()->last_name }}} ">
+                                 <span>{{ Auth::user()->first_name." ".Auth::user()->last_name }}</span>
+                                 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                                    </li>
+                                <li class="divider"></li>
+                                <li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-share"></span> Logout</a></li>
+                            </ul>
+                    </li>
+                    @else
+                    <li  class="{{ (Request::is('user/login') ? 'active' : '') }}"><a href="{{{ URL::to('user/login') }}}">Login</a></li>
+                    <li  class="{{ (Request::is('user/create') ? 'active' : '') }}"><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
+                    @endif
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
         <div id="body-user" style="min-height:100%">
             <div class="container">
 				<!-- Content -->

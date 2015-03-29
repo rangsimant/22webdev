@@ -1,4 +1,4 @@
-@extends('site.layouts.sbadmin2')
+@extends('site.layouts.user_template')
 
 {{-- Web site Title --}}
 @section('title')
@@ -8,8 +8,15 @@
 
 {{-- Content --}}
 @section('content')
-<div class="page-header">
-	<h1>Forgot Password</h1>
+<div id="forgotpassword" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+    <div class="panel panel-default" >
+        <div class="panel-heading">
+            <div class="panel-title">{{{ Lang::get('user/user.forgot_password') }}}</div>
+        </div>     
+
+        <div style="padding-top:30px" class="panel-body" >
+			{{ Confide::makeResetPasswordForm($token)->render() }}
+		</div>
+	</div>
 </div>
-{{ Confide::makeResetPasswordForm($token)->render() }}
 @stop

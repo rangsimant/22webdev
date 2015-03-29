@@ -21,7 +21,7 @@ thevote.controller('feed', function($rootScope, $scope, $http, $interval) {
 
 	$scope.postCreate = function()
 	{
-		if (typeof ($scope.title && $scope.content) !== "undefined") 
+		if ((typeof ($scope.title && $scope.content) !== "undefined") && (($scope.title && $scope.content) != null)) 
 		{
 			$('.post-loading').show();
 			$scope.dataFrom = {

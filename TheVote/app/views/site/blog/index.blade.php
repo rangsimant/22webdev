@@ -11,11 +11,6 @@
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" ng-model="csrf"/>
 		<div class="header-post">
         	<strong>What are you give wanted to vote.</strong>
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-chevron-down"></i>
-                </button>
-            </div>
             <span class="pull-right"><img src="{{ asset('custom/image/loading/20.gif') }}" class="post-loading" border="0px" hidden> </span>
         </div>
 		<div class="box-input-post">
@@ -51,29 +46,35 @@
 			<div class="row">
 				<div class="col-md-4">
 					<a href="{{ URL::to('/') }}/@{{ feed.id }}" class="thumbnail">
-						<img ng-if="feed.attachment" src="@{{ feed.attachment }}" alt="" style="max-height:400px">
-						<img ng-if="!feed.attachment" src="{{ asset('custom/image/no-image_800x400.png') }}" alt="" style="max-height:400px">
+						<img ng-if="feed.attachment" ng-src="@{{ feed.attachment }}" alt="" style="max-height:400px">
+						<img ng-if="!feed.attachment" ng-src="{{ asset('custom/image/no-image_800x400.png') }}" alt="" style="max-height:400px">
 					</a>
 					<div id="footer_total">
-						<span  class="fa fa-thumbs-o-up"></span> <a href="" title="Agree"><span ng-click="votePost(feed.id,'agree')" ><span class="@{{ feed.id }}_agree">@{{ feed.agree }}</span> Agree</span></a>
-						<span  class="fa fa-thumbs-o-down"></span> <a href="" title="Disagree"><span ng-click="votePost(feed.id,'disagree')"><span class="@{{ feed.id }}_disagree">@{{ feed.disagree }}</span> Disagree</span></a>
+						<span  class="fa fa-thumbs-o-up"></span> 
+						<a href="" title="Agree" ng-if="{{ Auth::check() }}" ng-cloak><span ng-click="votePost(feed.id,'agree')" ><span class="@{{ feed.id }}_agree">@{{ feed.agree }}</span> Agree</span></a>
+						<a href="{{ URL::to('user/login') }}" title="Agree" ng-if="{{ !Auth::check() }}" ng-cloak><span ><span>@{{ feed.agree }}</span> Agree</span></a>
+						<span  class="fa fa-thumbs-o-down"></span> 
+						<a href="" title="Disagree" ng-if="{{ Auth::check() }}" ng-cloak><span ng-click="votePost(feed.id,'disagree')"><span class="@{{ feed.id }}_disagree">@{{ feed.disagree }}</span> Disagree</span></a>
+						<a href="{{ URL::to('user/login') }}" title="Disagree" ng-if="{{ !Auth::check() }}" ng-cloak><span><span>@{{ feed.disagree }}</span> Disagree</span></a>
 						<span class="fa fa-comment-o"></span> <a href="{{ URL::to('/') }}/@{{ feed.id }}#comments" title="Comments">@{{ feed.comment }} Comments</a>
 					</div>
 				</div>
 				<div class="col-md-8">
 
 					<!-- post edit -->
-					<div class="btn-group pull-right">
-		                <button type="button" class="btn btn-default btn-xs btn-post-edit dropdown-toggle" data-toggle="dropdown">
-		                    <i class="fa fa-chevron-down"></i>
-		                </button>
-		                <ul class="dropdown-menu dropdown-menu-post-edit" role="menu" aria-labelledby="drop3">
-			                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="edit(feed.id)"><i class="fa fa-pencil-square-o"></i> Edit</a></li>
-			                <li role="presentation" class="divider"></li>
-			            	<li role="presentation"><a type="button" data-toggle="modal" data-target="#alertDelete_@{{ feed.id }}"><i class="fa fa-trash-o"></i> Trash</a></li>
-			            </ul>
-		            </div>
-		            @include('site.blog.modal_confirm_delete')
+					@if(Auth::check())
+						<div class="btn-group pull-right" ng-if="{{ Auth::user()->id }} == feed.user_id">
+			                <button type="button" class="btn btn-default btn-xs btn-post-edit dropdown-toggle" data-toggle="dropdown">
+			                    <i class="fa fa-chevron-down"></i>
+			                </button>
+			                <ul class="dropdown-menu dropdown-menu-post-edit" role="menu" aria-labelledby="drop3">
+				                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="edit(feed.id)"><i class="fa fa-pencil-square-o"></i> Edit</a></li>
+				                <li role="presentation" class="divider"></li>
+				            	<li role="presentation"><a type="button" data-toggle="modal" data-target="#alertDelete_@{{ feed.id }}"><i class="fa fa-trash-o"></i> Trash</a></li>
+				            </ul>
+			            </div>
+			            @include('site.blog.modal_confirm_delete')
+		            @endif
 		            <!-- ./ post edit -->
 
 					<h4><strong><a href="{{ URL::to('/') }}/@{{ feed.id }}">@{{ feed.title }}</a></strong></h4>
@@ -84,8 +85,8 @@
 					</p>
 					<p id="footer" class="">				
 						<span>
-							<img ng-if="feed.picture" src="@{{ feed.picture }}" class="" style="max-width:24px">
-							<img ng-if="!feed.picture" src="{{ URL::to('custom/image/22avatar.png') }}" class="" style="max-width:24px">
+							<img ng-if="feed.picture" ng-src="@{{ feed.picture }}" class="" style="max-width:24px">
+							<img ng-if="!feed.picture" ng-src="{{ URL::to('custom/image/22avatar.png') }}" class="" style="max-width:24px">
 						</span> 
 						<span class="muted author">@{{ feed.first_name}} @{{ feed.last_name }}</span>
 						| @{{ feed.created_time_ago }}

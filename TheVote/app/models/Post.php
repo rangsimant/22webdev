@@ -130,7 +130,7 @@ class Post extends Eloquent {
 	public function getFeedsAll()
 	{
 		$feeds = DB::table('posts')
-							->select('posts.id','posts.title','posts.content','posts.attachment','users.first_name','users.last_name','users.picture','posts.created_at','posts.updated_at')
+							->select('posts.id','posts.user_id','posts.title','posts.content','posts.attachment','users.first_name','users.last_name','users.picture','posts.created_at','posts.updated_at')
 							->join('users', 'posts.user_id', '=', 'users.id')
 							->orderBy('updated_at', 'DESC')
 							->get();

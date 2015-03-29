@@ -461,7 +461,7 @@ div#alertPost,.alertDelete
 
 .btn-post-edit
 {
-	color:gray;
+	color:rgb(224, 224, 224);
 	border:0px;
 }
 .btn-post-edit i.fa 
@@ -469,6 +469,10 @@ div#alertPost,.alertDelete
   font-size: 10px;
 }
 .dropdown-menu-post-edit
+{
+	border-radius: 0px;
+}
+.panel
 {
 	border-radius: 0px;
 }

@@ -5,17 +5,17 @@ thevote.controller('viewfeed', function($rootScope, $scope, $http, $interval) {
 		{
 			$('.post-loading').show();
 			$scope.dataFrom = {
-			 	'title':$scope.title,
-			 	'content':$scope.content,
-			 	'keywords':$scope.keywords,
-				'_token':$('input[name="_token"]').attr('value')
+			 	'title': $scope.title,
+			 	'content': $scope.content,
+			 	'keywords': $scope.keywords,
+				'_token': $scope.token
 			};
 			$http({
 				  method  : 'post',
 				  url     : $scope.baseUrl+'/api/newpost',
 				  data    : $scope.dataFrom,
 				   headers: {
-	                'X-CSRF-Token': $scope.dataFrom['_token']
+	                'X-CSRF-Token': $scope.token
 	            }
 				 }).
 				success(function(data) {
@@ -43,14 +43,14 @@ thevote.controller('viewfeed', function($rootScope, $scope, $http, $interval) {
 		$scope.vote = {
 			'idPost': idPost,
 			'type': type,
-			'_token':$('input[name="_token"]').attr('value')
+			'_token': $scope.token
 		};
 		$http({
 			  method  : 'post',
 			  url     : $scope.baseUrl+'/api/vote',
 			  data    : $scope.vote,
 			  headers: {
-                'X-CSRF-Token': $scope.vote['_token']
+                'X-CSRF-Token': $scope.token
             }
 			 }).
 			success(function(data) {
@@ -86,6 +86,7 @@ thevote.controller('viewfeed', function($rootScope, $scope, $http, $interval) {
 
 	$scope.$watch('baseUrl', function(){
 	    $rootScope.baseUrl = $scope.baseUrl;
+	    $rootScope.token = $('input[name="_token"]').attr('value');
 	 });
 });
 

@@ -34,6 +34,7 @@
 	<div class="col-md-9 col-xs-12">
 		<div class="box-content row">
 			<div class="box-author">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}" ng-model="csrf"/>
 				<div class="left clearfix">
                     <span class="pull-left img-author">
 						<img src="{{ !empty($post->author->picture)?$post->author->picture:URL::to('custom/image/22avatar.png') }}" alt="" class="img-responsive" style="max-width:40px;">
