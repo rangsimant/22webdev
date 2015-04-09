@@ -1,4 +1,5 @@
 .table>caption+thead>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>th, .table>thead:first-child>tr:first-child>td
 {
 	padding: 7px;
+	text-align: left;
 }

@@ -9,15 +9,23 @@
 	        <div class="row">
 	            <div class="col-sm-4 col-xs-6">
 	                <form class="ng-pristine ng-valid">
-	                    <input type="text" placeholder="search" class="form-control ng-pristine ng-valid" ng-model="filter" ng-keyup="search()">
+	                	<div class="input-group">
+					        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+		                    <input type="text" placeholder="Search..." class="form-control ng-pristine ng-valid" ng-model="filter" ng-keyup="search()">
+					    </div>
 	                </form>
 	            </div>
+	            <div class="col-sm-8 col-xs-6 filter-result-info" ng-cloak>
+                    <span class="ng-binding">
+                       All patient @{{ patientTable.total() }} persons
+                    </span>              
+                </div>
 	        </div>
 	    </div>
-		<table class="table table-bordered table-striped table-responsive" ng-table="patientTable" template-pagination="custom/pager" class="table">
+		<table class="table table-bordered table-striped table-responsive table-hover" ng-table="patientTable" template-pagination="custom/pager" class="table">
 
-	            <tr ng-repeat="patient in $data | filter:filter as display" ng-cloak width="10%">
-	                <td data-title="'Photo'" align="center">
+	            <tr ng-repeat="patient in $data | filter:filter as display" ng-cloak>
+	                <td data-title="'Photo'" width="5%" align="center">
 	                	<img ng-src="{{ URL::to('uploads/profile') }}/@{{ patient.photo }}" class="img-circle img30_30" ng-cloak>
 	                </td>
 	                <td data-title="'Firstname'" sortable="'firstname'" width="30%">@{{ patient.firstname }}</td>

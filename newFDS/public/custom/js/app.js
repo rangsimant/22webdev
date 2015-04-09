@@ -13,6 +13,9 @@ FDS.controller('PatientList',function($rootScope, $scope, $http , $filter, ngTab
 			$scope.patientTable = new ngTableParams({
 		        page: 1,            // show first page
 		        count: 10,           // count per page
+		        filter:{
+		        	firstname:''
+		        },
 		        sorting: {
 		            firstname: 'asc',     // initial sorting
 		            lastname: '',     // initial sorting
@@ -22,10 +25,9 @@ FDS.controller('PatientList',function($rootScope, $scope, $http , $filter, ngTab
 		        total: data.length, // length of data
 		        getData: function($defer, params) {
 		        	 // use build-in angular filter
-		            var orderedData = params.sorting() ?
-		                                $filter('orderBy')(data, params.orderBy()) :
-		                                data;
+		            var orderedData = params.sorting() ? $filter('orderBy')(data, params.orderBy()) : data;
 		            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+		             params.total(orderedData.length); // set total for recalc pagination
 		        }
 		    });
 		}).
