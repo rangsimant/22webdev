@@ -6,11 +6,23 @@ FDS.controller('PatientList',function($rootScope, $scope, $http , $filter, ngTab
 		$http.get($scope.baseUrl+"/getPatientList").
 		success(function(data, status, headers, config)
 		{
-			// console.log("ststus: "+status);
-			// console.log(config);
-			// console.log(data);
 			$scope.patients = data;
-			$scope.patientTable = new ngTableParams({
+			$scope.dataTable(data);
+		}).
+		error(function(data, status, headers, config) 
+		{
+			console.log("ststus: "+status);
+		});
+	}
+
+	$scope.$watch('baseUrl', function(){
+		$scope.getPatients();
+	    $rootScope.token = $('input[name="_token"]').attr('value');
+	 });
+
+	$scope.dataTable = function(data)
+	{
+		$scope.patientTable = new ngTableParams({
 		        page: 1,            // show first page
 		        count: 10,           // count per page
 		        filter:{
@@ -30,15 +42,6 @@ FDS.controller('PatientList',function($rootScope, $scope, $http , $filter, ngTab
 		             params.total(orderedData.length); // set total for recalc pagination
 		        }
 		    });
-		}).
-		error(function(data, status, headers, config) 
-		{
-			console.log("ststus: "+status);
-		});
 	}
-
-	$scope.$watch('baseUrl', function(){
-		$scope.getPatients();
-	    $rootScope.token = $('input[name="_token"]').attr('value');
-	 });
+	
 });
