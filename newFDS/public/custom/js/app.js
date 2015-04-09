@@ -1,6 +1,6 @@
 var FDS = angular.module('FDS', ['ngTable']);
 
-FDS.controller('PatientList',function($rootScope, $scope, $http ,ngTableParams){
+FDS.controller('PatientList',function($rootScope, $scope, $http , $filter, ngTableParams){
 	$scope.getPatients = function()
 	{
 		$http.get($scope.baseUrl+"/getPatientList").
@@ -12,11 +12,20 @@ FDS.controller('PatientList',function($rootScope, $scope, $http ,ngTableParams){
 			$scope.patients = data;
 			$scope.patientTable = new ngTableParams({
 		        page: 1,            // show first page
-		        count: 10           // count per page
+		        count: 10,           // count per page
+		        sorting: {
+		            firstname: 'asc',     // initial sorting
+		            lastname: '',     // initial sorting
+		            gender: ''     // initial sorting
+		        }
 		    }, {
 		        total: data.length, // length of data
 		        getData: function($defer, params) {
-		            $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+		        	 // use build-in angular filter
+		            var orderedData = params.sorting() ?
+		                                $filter('orderBy')(data, params.orderBy()) :
+		                                data;
+		            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
 		        }
 		    });
 		}).

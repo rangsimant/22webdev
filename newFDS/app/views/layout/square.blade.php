@@ -19,6 +19,7 @@
 		<!-- ./ Square 1.4 -->
 
 		<link rel="stylesheet" href="{{ asset('custom/css/square-font.css') }}">
+		<link rel="stylesheet" href="{{ asset('bower_components/ng-table/dist/ng-table.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
 
 		<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
