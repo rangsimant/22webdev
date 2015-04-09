@@ -22,7 +22,8 @@
 		<link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
 
 		<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-		<script src="{{ asset('bower_components/angular-1.3.14/angular.min.js') }}"></script>
+		<script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+		<script src="{{ asset('bower_components/ng-table/dist/ng-table.min.js') }}"></script>
 		<script src="{{ asset('custom/js/app.js') }}"></script>
 		<script src="{{ asset('bower_components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>
 	</head>
@@ -133,6 +134,11 @@
 				                <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Map</span></a></li>
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
+					    </li>
+					     <li class="">
+				            <a href="{{ URL::to('questionnaire') }}">
+				            	<i class="fa fa-file-text-o"></i><span>Questionnaire</span>
+				            </a>
 					    </li>
 					    <li class="">
 				            <a href="#Notification"><i class="fa fa-bell-o"></i><span>Notification</span></a>

@@ -17,7 +17,7 @@ class Patient extends Eloquent
     {
     	$patient = DB::table('patient')
     				->join('user_profile', 'patient.User', '=', 'user_profile.User')
-    				->select('patient.idPatient', 'user_profile.firstname', 'user_profile.lastname', 'user_profile.gender')
+    				->select('patient.idPatient', 'user_profile.firstname', 'user_profile.lastname', 'user_profile.gender', 'user_profile.photo')
     				->get();
     	return $patient;
     }
