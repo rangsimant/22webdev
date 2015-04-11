@@ -24,8 +24,10 @@ class Device extends Eloquent
                             'device.description', 
                             'devicetype.name as typename', 
                             'devicetype.photo',
+                            'device.created_at',
                             'device.deleted_at'
                             )
+                    ->orderBy('device.created_at', 'ASC')
                     ->get();
 		foreach ($device as $key => $value) {
 			if ($value->deleted_at == null) 

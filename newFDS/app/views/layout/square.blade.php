@@ -20,6 +20,8 @@
 
 		<link rel="stylesheet" href="{{ asset('custom/css/square-font.css') }}">
 		<link rel="stylesheet" href="{{ asset('bower_components/ng-table/dist/ng-table.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
 
 		<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
@@ -165,9 +167,12 @@
 	</body>
 
     <script src="{{ asset('bower_components/dataTables-1.10.6/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('bower_components/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+	<script src="{{ asset('bower_components/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+
 
 	<script type="text/javascript">
-	$(function(){
+	$(function(){	    
 		if ($('li').hasClass('active')) {
                 $('> a').removeClass('collapsed');
                 var activeMenu = $('li.active > ul').attr('id');

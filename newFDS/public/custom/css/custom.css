@@ -8,3 +8,11 @@
 	border-top-left-radius: 0px; 
 	border-top-right-radius: 0px; 
 }
+.ui-select
+{
+	margin: 0px;
+}
+ul.alert > li
+{
+	margin-left: 15px
+}

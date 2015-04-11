@@ -13,15 +13,39 @@ class DeviceController extends BaseController
 
 	public function create()
 	{
-		return View::make('patient.create');
+		$devicetype = DeviceType::all();
+		return View::make('device.create')->with('devicetype', $devicetype);
 	}
 
-	public function edit($idPatient)
+	public function store()
+	{
+		$input = Input::all();
+		$rules = array
+					(
+						'name'=> 'required',
+						'DeviceType'=> 'required | numeric',
+						'purchasedDate'=> 'date_format:Y-m-d'
+					);
+		$validator = Validator::make($input, $rules);
+		if ($validator->fails())
+	    {
+	        return Redirect::to('device/create')
+	        				->withErrors($validator)
+	        				->withInput(Input::all());
+	    }
+	    else
+	    {
+			$result = Device::create(Input::except('_token'));
+			return Redirect::to('device');
+	    }
+	}
+
+	public function edit($idDevice)
 	{
 		if (Auth::user()->hasRole('admin')) 
 		{
-			$patient = Patient::find($idPatient);
-			return View::make('patient.edit')->with('patient', $patient);
+			$device = Device::find($idDevice);
+			return View::make('device.edit')->with('device', $device);
 		}
 		else
 		{
