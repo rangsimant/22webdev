@@ -43,9 +43,12 @@ FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams){
 	
 });
 
-FDS.controller('DeviceList',function($scope, $http , $filter, ngTableParams){
+FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTableParams){
+
+
 	$scope.$watch('baseUrl', function(){
 		$scope.getDevices();
+		$rootScope.token = $('input[name="_token"]').attr('value');
 	 });
 
 	$scope.getDevices = function()
@@ -61,6 +64,29 @@ FDS.controller('DeviceList',function($scope, $http , $filter, ngTableParams){
 		{
 			console.log("ststus: "+status);
 		});
+	}
+
+	$scope.deviceDelete = function()
+	{
+		$http({
+			  method  : 'Get',
+			  url     : $scope.baseUrl + '/device/' + $scope.idDevice + '/delete',
+			  data    : $scope.device,
+			  headers: {
+                'X-CSRF-Token': $scope.token
+            }
+			 }).
+			success(function(data) {
+				console.log(data);
+            }).
+		 	error(function() {
+                console.log('error');
+            });
+	}
+
+	$scope.getIDDevice = function(idDevice)
+	{
+		$scope.idDevice = idDevice;
 	}
 
 	$scope.dataTableDevice = function(data)

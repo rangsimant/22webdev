@@ -44,11 +44,31 @@
 	                		<a href="{{ URL::to('device') }}/@{{ device.idDevice }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
 	                	</span>
 	                	<span>
-	                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete">Delete</a>
+	                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#deviceDelete" ng-click="getIDDevice(device.idDevice)">Delete</a>
 	                	</span>
 	                </td>
 	            </tr>
 	    </table>
+
+	    <!-- Modal -->
+	    <div class="modal fade" id="deviceDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Delete Device</h4>
+		      </div>
+		      <div class="modal-body">
+		        Are you sure ?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deviceDelete()">Confirm</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	    <!-- ./ Modal -->
     	<script type="text/ng-template" id="custom/pager">
 		    <footer class="table-footer">
 	            <div class="row">

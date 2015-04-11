@@ -20,12 +20,13 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::resource('patient','PatientController');
 	Route::resource('device','DeviceController');
+
+	// Angular Route
+	Route::get('getPatientList','PatientController@getPatient');
+	Route::get('getDeviceList','DeviceController@getDevice');
+	Route::get('device/{idDevice}/delete','DeviceController@deleteDevice');
 });
 
-
-// Angular Route
-Route::get('getPatientList','PatientController@getPatient');
-Route::get('getDeviceList','DeviceController@getDevice');
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');

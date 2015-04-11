@@ -1,12 +1,17 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 /**
 * 
 */
 class Device extends Eloquent
 {
+    use SoftDeletingTrait;
+
 	protected $table = 'device';
 	protected $primaryKey = 'idDevice';
+    protected $dates = ['deleted_at'];
+
     public static $unguarded = true;
 
     public function user()
@@ -40,5 +45,19 @@ class Device extends Eloquent
 			}
 		}
     	return $device;
+    }
+
+    public function deviceForceDelete($idDevice)
+    {
+    	$device = self::find($idDevice);
+    	if ($device) 
+    	{
+	    	$device->forceDelete();
+	    	return 'Delete device success.';
+    	}
+    	else
+    	{
+    		return "this Device: ".$idDevice." Deleted.";
+    	}
     }
 }

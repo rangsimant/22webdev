@@ -58,4 +58,13 @@ class DeviceController extends BaseController
 	{
 		return Device::getDeviceList();
 	}
+
+	public function deleteDevice($idDevice)
+	{
+		$device = new Device();
+		$result = $device->deviceForceDelete($idDevice);
+
+		return $result;
+	}
+
 }
