@@ -3,12 +3,12 @@
 /**
 * 
 */
-class PatientController extends BaseController
+class DeviceController extends BaseController
 {
 	
 	public function index()
 	{
-		return View::make('patient.index');
+		return View::make('device.index');
 	}
 
 	public function create()
@@ -30,8 +30,8 @@ class PatientController extends BaseController
 		
 	}
 
-	public function getPatient()
+	public function getDevice()
 	{
-		return Patient::getPatientList();
+		return Device::getDeviceList();
 	}
 }

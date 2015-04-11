@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="{{ asset('bower_components/font-awesome-4.3.0/css/font-awesome.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-3.3.4/css/bootstrap.min.css') }}">
+		<!-- <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-3.3.4/css/bootstrap.min.css') }}"> -->
 		<!-- <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-3.3.4/css/bootstrap-theme.min.css') }}"> -->
 
 		<!-- Square 1.4 Theme -->
@@ -97,25 +97,24 @@
 		    <aside id="nav-container" class="ng-scope">        
 				<div id="nav-wrapper" class="ng-scope">
 				    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><ul id="nav" class="ng-scope" style="overflow: hidden; width: auto; height: 100%;"  id="accordion" role="tablist" aria-multiselectable="true">
-				        <li class="active"><a href="#monitor"> <i class="fa fa-desktop"></i><span >Monitor</span> </a></li>
-				        <li class="">
+				        <li class="{{ (Request::segment(1)=='monitor')? 'active' : '' }}"><a href="#monitor"> <i class="fa fa-desktop"></i><span >Monitor</span> </a></li>
+				        <li class="{{ (Request::segment(1)=='device' || Request::segment(1)=='device/type')? 'active' : '' }}">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Device" aria-expanded="true" aria-controls="Device">
-				            	<i class="fa fa-mobile"></i><span>Device</span>
+				            	<i class="fa fa-tag"></i><span>Device</span>
 				            </a>
 				            <ul id="Device" class="panel-collapse collapse">
-				                <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Device</span></a></li>
-				                <li><a href="#/tables/responsive"><i class="fa fa-caret-right"></i><span>Device Type</span></a></li>
+				                <li class="{{ (Request::segment(1)=='device')? 'active' : '' }}"><a href="{{ URL::to('device') }}"><i class="fa fa-caret-right"></i><span>Device</span></a></li>
+				                <li class="{{ (Request::segment(1)=='device/type')? 'active' : '' }}"><a href="{{ URL::to('divice/type') }}"><i class="fa fa-caret-right"></i><span>Device Type</span></a></li>
 				                <li><a href="#/tables/dynamic"><i class="fa fa-caret-right"></i><span>Sensor</span></a></li>
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>
-					    <li class="">
+					    <li class="{{ (Request::segment(1)=='patient')? 'active' : '' }}">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Patient" aria-expanded="true" aria-controls="Patient">
 				            	<i class="fa fa-wheelchair"></i><span>Patient</span>
 				            </a>
 				            <ul id="Patient" class="panel-collapse collapse">
-				                <li><a href="{{ URL::to('patient') }}"><i class="fa fa-caret-right"></i><span>Patient</span></a></li>
-				                <li><a href="#/tables/responsive"><i class="fa fa-caret-right"></i><span>Patient Type</span></a></li>
+				                <li class="{{ (Request::segment(1)=='patient')? 'active' : '' }}"><a href="{{ URL::to('patient') }}"><i class="fa fa-caret-right"></i><span>Patient</span></a></li>
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>
@@ -169,6 +168,12 @@
 
 	<script type="text/javascript">
 	$(function(){
+		if ($('li').hasClass('active')) {
+                $('> a').removeClass('collapsed');
+                var activeMenu = $('li.active > ul').attr('id');
+                $('#'+activeMenu).addClass('collapse in');
+            };
+
 		$('.collapse').on('show.bs.collapse', function () {
 		  $('.collapse.in').collapse('hide');
 		})
