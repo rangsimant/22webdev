@@ -19,6 +19,11 @@ class Device extends Eloquent
         return $this->hasOne('User', 'id', 'User');
     }
 
+    public function devicetype()
+    {
+        return $this->hasOne('DeviceType', 'idDeviceType', 'DeviceType');
+    }
+
     public static function getDeviceList()
     {
     	$device = DB::table('device')
@@ -49,7 +54,7 @@ class Device extends Eloquent
 
     public function deviceForceDelete($idDevice)
     {
-    	$device = self::find($idDevice);
+    	$device = self::withTrashed()->find($idDevice);
     	if ($device) 
     	{
 	    	$device->forceDelete();
@@ -59,5 +64,18 @@ class Device extends Eloquent
     	{
     		return "this Device: ".$idDevice." Deleted.";
     	}
+    }
+
+    public static function changeStatusDevice($idDevice, $status)
+    {
+        $device = self::withTrashed()->find($idDevice);
+        if ($status == 1) // is Activate
+        {
+            return $device->restore();
+        }
+        else
+        {
+            return $device->delete();
+        }
     }
 }

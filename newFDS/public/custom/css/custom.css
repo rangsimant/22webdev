@@ -12,6 +12,10 @@
 {
 	margin: 0px;
 }
+.ui-select>select
+{
+	z-index: 1;
+}
 ul.alert > li
 {
 	margin-left: 15px

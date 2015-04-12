@@ -22,6 +22,7 @@
                 </div>
                 <div class="col-sm-4 col-xs-6">
                 	<a href="{{ URL::to('device/create') }}" class="btn btn-default pull-right" title="New Device"><i class="fa fa-tag"></i> New Device</a>
+                	<a href="#Reload" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
                 </div>
 	        </div>
 	    </div>

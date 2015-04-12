@@ -56,9 +56,10 @@ FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTabl
 		$http.get($scope.baseUrl+"/getDeviceList").
 		success(function(data, status, headers, config)
 		{
-			$scope.devices = data;
-			$scope.dataTableDevice(data);
-			console.log(data);
+			$scope.data = [];
+			$scope.data.push(data);
+			$scope.dataTableDevice();
+			console.log($scope.data);
 		}).
 		error(function(data, status, headers, config) 
 		{
@@ -77,11 +78,18 @@ FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTabl
             }
 			 }).
 			success(function(data) {
-				console.log(data);
+				$scope.refreshTable();
             }).
 		 	error(function() {
                 console.log('error');
             });
+	}
+
+	$scope.refreshTable = function()
+	{
+		$scope.getDevices();
+		$scope.deviceTable.sorting({ name:''});
+		console.log('Refresh table.');
 	}
 
 	$scope.getIDDevice = function(idDevice)
@@ -89,7 +97,7 @@ FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTabl
 		$scope.idDevice = idDevice;
 	}
 
-	$scope.dataTableDevice = function(data)
+	$scope.dataTableDevice = function()
 	{
 		$scope.deviceTable = new ngTableParams({
 		        page: 1,            // show first page
@@ -98,13 +106,13 @@ FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTabl
 		        	status:''
 		        },
 		        sorting: {
-		           
+
 		        }
 		    }, {
-		        total: data.length, // length of data
+		        total: $scope.data[0].length, // length of data
 		        getData: function($defer, params) {
 		        	 // use build-in angular filter
-		            var orderedData = params.sorting() ? $filter('orderBy')(data, params.orderBy()) : data;
+		            var orderedData = params.sorting() ? $filter('orderBy')($scope.data[0], params.orderBy()) : $scope.data[0];
 		            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
 		            params.total(orderedData.length); // set total for recalc pagination
 		        }

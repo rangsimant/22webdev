@@ -6,14 +6,14 @@
 	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> New Device</strong></div>
 	<div class="panel-body">
 		{{ HTML::ul($errors->all(), array('class' => 'alert ng-isolate-scope alert-danger alert-dismissable')) }}
-		
+
 		{{ Form::open(array('url' => 'device', 'class' => 'form-horizontal form-validation', 'autocomplete' => 'off')) }}
 			<div class="form-group">
 	            <div class="col-sm-2">
 	                <label for="">Device name :</label>
 	            </div>
 	            <div class="col-sm-10">
-	                <input type="text" class="form-control" placeholder="Name" name="name" value="{{ Input::old('name') }}">
+	                <input type="text" class="form-control" placeholder="Name" name="name" value="{{ Input::old('name') }}" autofocus>
 	            </div>
 	        </div>
 
@@ -22,16 +22,14 @@
 	                <label for="">Device type :</label>
 	            </div>
 	            <div class="col-sm-10">
-	            	<div class="">
-	            		<span class="ui-select">
-		            		<select name="DeviceType" value="{{ Input::old('DeviceType') }}">
-		            			<option value="">-- Select --</option>
-		            			@foreach($devicetype as $value)
-			            			<option value="{{ $value->idDeviceType }}">{{ $value->name }}</option>
-		            			@endforeach
-		            		</select>
-		            	</span>
-	            	</div>
+            		<span class="ui-select">
+	            		<select name="DeviceType" value="{{ Input::old('DeviceType') }}">
+	            			<option value="">-- Select --</option>
+	            			@foreach($devicetype as $value)
+		            			<option value="{{ $value->idDeviceType }}">{{ $value->name }}</option>
+	            			@endforeach
+	            		</select>
+	            	</span>
 	            </div>
 	        </div>
 
@@ -62,7 +60,7 @@
 	            </div>
 	            <div class="col-sm-10">
 	            	<span>
-		                <button type="reset" class="btn btn-default">Cencel</button>
+		                <button type="reset" class="btn btn-default">Reset</button>
 		                <button type="submit" class="btn btn-primary">Create</button>
 	            	</span>
 	            </div>

@@ -44,14 +44,46 @@ class DeviceController extends BaseController
 	{
 		if (Auth::user()->hasRole('admin')) 
 		{
-			$device = Device::find($idDevice);
-			return View::make('device.edit')->with('device', $device);
+			$device = Device::withTrashed()->find($idDevice);
+
+			$devicetype = DeviceType::all();
+			return View::make('device.edit')
+							->with('device', $device)
+							->with('devicetype', $devicetype);
 		}
 		else
 		{
 			return "not permission";
 		}
-		
+	}
+
+	public function update()
+	{
+		$input = Input::all();
+		$idDevice = $input['idDevice'];
+		$status = $input['status'];
+		$rules = array
+					(
+						'name'=> 'required',
+						'DeviceType'=> 'required | numeric',
+						'purchasedDate'=> 'date_format:Y-m-d'
+					);
+		$validator = Validator::make($input, $rules);
+		if ($validator->fails())
+	    {
+	        return Redirect::to('device/'.$idDevice.'/edit')
+	        				->withErrors($validator)
+	        				->withInput(Input::all());
+	    }
+	    else
+	    {
+			$result = Device::withTrashed()
+							->find($idDevice)
+							->update(Input::except('_method', '_token', 'status', 'idDevice'));
+			Device::changeStatusDevice($idDevice, $status);
+			
+			return Redirect::to('device');
+	    }
 	}
 
 	public function getDevice()
