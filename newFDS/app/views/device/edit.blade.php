@@ -53,7 +53,7 @@
 	                <label for="">Description :</label>
 	            </div>
 	            <div class="col-sm-10">
-	                <textarea type="text" class="form-control" placeholder="Description" name="description">{{ Input::old('description') ? $device->description : Input::old('description') }}</textarea>
+	                <textarea type="text" class="form-control" placeholder="Description" name="description">{{ (Input::old('description') === null) ? $device->description : Input::old('description') }}</textarea>
 	            </div>
 	        </div>
 

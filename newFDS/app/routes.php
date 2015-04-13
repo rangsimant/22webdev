@@ -20,10 +20,12 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::resource('patient','PatientController');
 	Route::resource('device','DeviceController');
+	Route::resource('devicetype','DeviceTypeController');
 
 	// Angular Route
 	Route::get('getPatientList','PatientController@getPatient');
 	Route::get('getDeviceList','DeviceController@getDevice');
+	Route::get('getDeviceTypeList','DeviceTypeController@getDeviceType');
 	Route::get('device/{idDevice}/delete','DeviceController@deleteDevice');
 });
 

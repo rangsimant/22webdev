@@ -30,8 +30,7 @@
 
 	            <tr ng-repeat="device in $data | filter:filter as display" ng-cloak>
 	                <td data-title="'Photo'" width="5%" align="center">
-	                	<img ng-if="device.photo != null" ng-src="{{ URL::to('uploads/devicetype') }}/@{{ device.photo }}" class="img-circle img30_30" ng-cloak>
-	                	<img ng-if="device.photo == null" ng-src="{{ URL::to('uploads/default/device-default.png') }}" class="img-circle img30_30" ng-cloak>
+	                	<img ng-src="@{{ device.photo }}" class="img-circle img30_30" ng-cloak>
 	                </td>
 	                <td data-title="'Device name'" sortable="'name'" width="30%">@{{ device.name }}</td>
 	                <td data-title="'Type'" sortable="'typename'" width="10%">@{{ device.typename }}</td>

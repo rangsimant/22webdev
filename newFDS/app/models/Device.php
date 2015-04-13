@@ -40,6 +40,15 @@ class Device extends Eloquent
                     ->orderBy('device.created_at', 'ASC')
                     ->get();
 		foreach ($device as $key => $value) {
+            if ($value->photo == null) 
+            {
+                $device[$key]->photo = URL::to('uploads/default/device-default.png');
+            }
+            else
+            {
+                $device[$key]->photo = URL::to('uploads/devicetype/'.$value->photo);
+            }
+
 			if ($value->deleted_at == null) 
 			{
 				$device[$key]->status = 'Activate';

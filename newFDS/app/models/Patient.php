@@ -26,6 +26,17 @@ class Patient extends Eloquent
                             'user_profile.photo'
                             )
                     ->get();
+        foreach ($patient as $key => $value) 
+        {
+            if ($value->photo == null) 
+            {
+                $patient[$key]->photo = URL::to('uploads/default/icon-user-default.png');
+            }
+            else
+            {
+                $patient[$key]->photo = URL::to('uploads/profile/'.$value->photo);
+            }
+        }
     	return $patient;
     }
 }
