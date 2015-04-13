@@ -33,3 +33,12 @@ ul.alert > li
 	display: -webkit-inline-box;
 	margin-right: 10px;
 }
+.file-preview-frame
+{
+	min-width: 100%;
+	margin: 0px;
+}
+.file-drop-zone-title
+{
+	font-size: 20px;
+}

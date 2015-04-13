@@ -37,7 +37,7 @@ class Device extends Eloquent
                             'device.created_at',
                             'device.deleted_at'
                             )
-                    ->orderBy('device.created_at', 'ASC')
+                    ->orderBy('device.created_at', 'DESC')
                     ->get();
 		foreach ($device as $key => $value) {
             if ($value->photo == null) 

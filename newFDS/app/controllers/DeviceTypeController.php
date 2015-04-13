@@ -26,6 +26,16 @@ class DeviceTypeController extends BaseController
 		$devicetype = DeviceType::find($idDeviceType);
         $sensors = Sensor::orderBy('idSensor')->get();
         $devicetype_sensor = DeviceTypeSensor::where('DeviceType',$idDeviceType)->orderBy('Sensor')->get();
+
+    	if ($devicetype->photo != null) 
+    	{
+    		$devicetype->photo = URL::to('uploads/devicetype/'.$devicetype->photo);
+    	}
+    	else
+    	{
+    		$devicetype->photo = URL::to('uploads/default/device-default.png');
+    	}
+
 		return View::make('devicetype.edit')
 						->with('devicetype', $devicetype)
 						->with('sensors', $sensors)
@@ -34,15 +44,8 @@ class DeviceTypeController extends BaseController
 
 	public function update()
 	{
-		$rules = array
-					(
-	                    'name'              => 'required',
-	                    'manufacturer'      => 'required',
-	                    'tel'      => 'Numeric',
-	                    'email'      => 'email'
-					);
 		$input = Input::all();
-		$validator = Validator::make($input, $rules);
+		$validator = Validator::make($input, DeviceType::$rules);
         $sensor = Input::get('sensor');
 
         if ($validator->fails())
@@ -54,22 +57,11 @@ class DeviceTypeController extends BaseController
         else
         {
         	$idDeviceType = $input['idDeviceType'];
-            $updatedrow = DeviceType::where('idDeviceType',$idDeviceType)->update(Input::except("_token","_method","sensor","filename-devicetype", "idDeviceType"));
-            $devicetype_sensor = DeviceTypeSensor::where('DeviceType',$idDeviceType)->delete();
+        	DeviceType::savePhoto($idDeviceType);
+            DeviceType::where('idDeviceType',$idDeviceType)->update(Input::except("_token","_method","sensor", "idDeviceType", "photo"));
+            DeviceTypeSensor::where('DeviceType',$idDeviceType)->delete();
+            DeviceTypeSensor::mapping($sensor, $idDeviceType);
             
-            $sensorArray = array();
-            foreach ($sensor as $value) {
-                if (isset($value['id'])) {
-                    $sensorArray['DeviceType'] = $idDeviceType;
-                    $sensorArray['Sensor'] = $value['id'];
-                    $sensorArray['numberOfChannel'] = isset($value['numberOfChannel'])?$value['numberOfChannel']:1;
-                    $affectedRow_sensor = DeviceTypeSensor::create($sensorArray);
-                }
-            }
-            // if(Input::hasFile('filename-devicetype'))
-            // {
-            //     Input::file('filename-devicetype')->move($path,$fileName); // save file at public/upload/devicetype
-            // }
             Session::flash('message', 'Successfully updated Device Type!');
             return Redirect::to('devicetype/'.$idDeviceType.'/edit');
         }
@@ -89,5 +81,11 @@ class DeviceTypeController extends BaseController
         $affectedRow = Sensor::create($sensor);
 
         return $affectedRow;
+    }
+
+    public function deletePhoto($idDeviceType)
+    {
+    	$deletePhoto = DeviceType::deletePhoto($idDeviceType);
+    	return $deletePhoto;
     }
 }

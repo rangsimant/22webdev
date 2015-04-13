@@ -14,7 +14,7 @@
         <div class="panel panel-default">
             <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Photo Device Type</strong></div>
             <div class="panel-body ng-scope">
-                photo
+            	<input type="file" class="file" name="photo" accept="image/*">
             </div>
         </div>
     </div>
@@ -215,6 +215,31 @@ $(function(){
 		{
 			$('#errorsensor').show();
 		}
+	});
+
+	var input_upload = $("input[type='file']");
+	input_upload.fileinput
+	({
+		initialPreview: [
+	        "<img src='{{ $devicetype->photo }}' class='file-preview-image' alt='{{ $devicetype->name }}' title='{{ $devicetype->name }}'>",
+	    ],
+	    initialPreviewConfig: [
+	        {caption: "{{ $devicetype->name }}", width: "120px", url: "{{ URL::to('devicetype/'.$devicetype->idDeviceType.'/deletePhoto') }}", key: "{{ csrf_token() }}"},
+	    ],
+		browseClass: "btn btn-primary btn-block",
+		browseLabel: " Pick Image",
+		browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+		removeClass: "btn btn-danger",
+		removeLabel: "Delete",
+		removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
+		uploadClass: "btn btn-info",
+		uploadLabel: "Upload",
+		uploadIcon: '<i class="glyphicon glyphicon-upload"></i>',
+		showCaption: false,
+		showRemove: false,
+		showUpload: false,
+        allowedFileExtensions : ['jpg', 'png','gif'],
+	    uploadAsync: false
 	});
 })
 </script>

@@ -22,6 +22,7 @@
 		<link rel="stylesheet" href="{{ asset('bower_components/ng-table/dist/ng-table.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-fileinput/css/fileinput.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
 
 		<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
@@ -167,9 +168,14 @@
 		</div>
 	</body>
 
+	<!-- new components -->
     <script src="{{ asset('bower_components/dataTables-1.10.6/media/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('bower_components/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 	<script src="{{ asset('bower_components/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+	<script src="{{ asset('bower_components/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
+	<script src="{{ asset('bower_components/bootstrap-fileinput/js/fileinput_locale_th.js') }}"></script>
+
+	<!-- Square 1.4 theme -->
 	<script src="{{ asset('theme/square-v1.4/dist/bower_components/jquery-spinner/dist/jquery.spinner.min.js') }}"></script>
 
 
