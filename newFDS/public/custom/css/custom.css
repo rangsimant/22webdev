@@ -20,3 +20,16 @@ ul.alert > li
 {
 	margin-left: 15px
 }
+.devicetype.ui-select > select 
+{
+	min-width: 0;
+	width: 100%;
+	padding: 5px 15px 5px 10px;
+}
+.devicetype.ui-select 
+{
+	margin: 0px;
+	width: 50px;
+	display: -webkit-inline-box;
+	margin-right: 10px;
+}

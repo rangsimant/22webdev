@@ -28,6 +28,7 @@
 		<script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 		<script src="{{ asset('bower_components/ng-table/dist/ng-table.min.js') }}"></script>
 		<script src="{{ asset('custom/js/app.js') }}"></script>
+		<script src="{{ asset('custom/js/devicetype.js') }}"></script>
 		<script src="{{ asset('bower_components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>
 	</head>
 
@@ -169,6 +170,7 @@
     <script src="{{ asset('bower_components/dataTables-1.10.6/media/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('bower_components/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 	<script src="{{ asset('bower_components/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+	<script src="{{ asset('theme/square-v1.4/dist/bower_components/jquery-spinner/dist/jquery.spinner.min.js') }}"></script>
 
 
 	<script type="text/javascript">
