@@ -87,4 +87,10 @@ class Device extends Eloquent
             return $device->delete();
         }
     }
+
+    public static function deactivate($idDevice)
+    {
+        $device = self::find($idDevice);
+        return $device->delete();
+    }
 }

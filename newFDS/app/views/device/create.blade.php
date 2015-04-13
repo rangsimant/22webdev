@@ -56,6 +56,21 @@
 
 	        <div class="form-group">
 	            <div class="col-sm-2">
+	                <label for="">Status :</label>
+	                <p><small>default : "Activate"</small></p>
+	            </div>
+	            <div class="col-sm-10">
+	            	<span class="ui-select">
+	            		<select name="status">
+	            			<option value="1" selected>Activate</option>
+	            			<option value="0" >Deactivate</option>
+	            		</select>
+	            	</span>
+	            </div>
+	        </div>
+
+	        <div class="form-group">
+	            <div class="col-sm-2">
 
 	            </div>
 	            <div class="col-sm-10">

@@ -35,7 +35,11 @@ class DeviceController extends BaseController
 	    }
 	    else
 	    {
-			$result = Device::create(Input::except('_token'));
+			$result = Device::create(Input::except('_token', 'status'));
+			if($input['status'] == 0) // if select Deactivate
+			{
+				Device::deactivate($result->idDevice);
+			}
 			return Redirect::to('device');
 	    }
 	}
