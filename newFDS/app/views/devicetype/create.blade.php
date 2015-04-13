@@ -13,7 +13,7 @@
         <div class="panel panel-default">
             <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Photo Device Type</strong></div>
             <div class="panel-body ng-scope">
-            	<input type="file" class="file" name="photo" accept="image/*">
+            	<input type="file" class="file-loading" name="photo" accept="image/*">
             </div>
         </div>
     </div>
@@ -127,8 +127,8 @@
 	                        <label for=""></label>
 	                    </div>
 	                    <div class="col-sm-10">
-	                    	<button type="submit" class="btn btn-primary pull-right">Create</button>
-	                    	<button type="reset" class="btn btn-default pull-right" style="margin-right: 10px;">Clear</button>
+	                    	<button type="reset" class="btn btn-default" style="margin-right: 10px;">Clear</button>
+	                    	<button type="submit" class="btn btn-primary">Create</button>
 	                    </div>
 	                </div>
 				</fieldset>
@@ -207,7 +207,7 @@ $(function(){
 	var input_upload = $("input[type='file']");
 	input_upload.fileinput
 	({
-		uploadUrl: "#",
+		// uploadUrl: "{{ URL::to('devicetype/uploadPhoto') }}",
 		browseClass: "btn btn-primary btn-block",
 		browseLabel: " Pick Image",
 		browseIcon: '<i class="glyphicon glyphicon-picture"></i>',

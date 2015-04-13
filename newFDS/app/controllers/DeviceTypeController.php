@@ -21,6 +21,8 @@ class DeviceTypeController extends BaseController
 
 	public function store()
 	{
+		echo "<pre>";
+		print_r(Input::all());die();
 		$validator = Validator::make(Input::all(), DeviceType::$rules);
         $sensor = Input::get('sensor');
 
@@ -119,7 +121,7 @@ class DeviceTypeController extends BaseController
 
         return $affectedRow;
     }
-
+   
     public function deletePhoto($idDeviceType)
     {
     	$deletePhoto = DeviceType::deletePhoto($idDeviceType);
