@@ -148,7 +148,7 @@ FDS.controller('DeviceTypeList',function($rootScope, $scope, $http , $filter, ng
 	$scope.refreshTable = function()
 	{
 		$scope.getDeviceTypes();
-		$scope.deviceTable.sorting({ name:''});
+		$scope.devicetypeTable.sorting({ name:''});
 		console.log('Refresh table.');
 	}
 

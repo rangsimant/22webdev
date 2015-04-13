@@ -42,3 +42,7 @@ ul.alert > li
 {
 	font-size: 20px;
 }
+button.kv-file-upload.btn.btn-xs.btn-default, .file-upload-indicator
+{
+	display: none;
+}

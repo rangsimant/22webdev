@@ -13,12 +13,33 @@ class DeviceTypeController extends BaseController
 
 	public function create()
 	{
-		
+        $sensors = Sensor::orderBy('idSensor')->get();
+
+		return View::make('devicetype.create')
+						->with('sensors', $sensors);
 	}
 
 	public function store()
 	{
-		
+		$validator = Validator::make(Input::all(), DeviceType::$rules);
+        $sensor = Input::get('sensor');
+
+        if ($validator->fails())
+        {
+            return Redirect::to('devicetype/create')
+                ->withErrors($validator)
+                ->withInput(Input::all());
+        }
+        else
+        {
+            $devicetype = DeviceType::create(Input::except("_token","sensor","photo"));
+            $idDeviceType = $devicetype->idDeviceType;
+        	DeviceType::savePhoto($idDeviceType);
+            DeviceTypeSensor::mapping($sensor, $idDeviceType);
+
+            Session::flash('message', 'Successfully created Device Type!');
+            return Redirect::to('devicetype');
+        }
 	}
 
 	public function edit($idDeviceType)
@@ -66,6 +87,22 @@ class DeviceTypeController extends BaseController
             return Redirect::to('devicetype/'.$idDeviceType.'/edit');
         }
 	}
+
+	public function destroy($idDeviceType)
+    {
+        $devicetype = DeviceType::find($idDeviceType);
+        if(empty($devicetype))
+        {
+           $this->redirectWithMessage($id);
+        }
+        else
+        {
+            DeviceType::deletePhoto($idDeviceType);
+            $devicetype->delete();
+            return 'Delete devicetype success.';
+        }
+        return 'No delete';
+    }
 
 	public function getDeviceType()
 	{
