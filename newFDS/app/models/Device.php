@@ -32,7 +32,6 @@ class Device extends Eloquent
                         $join->on('device_patient.Device', '=', 'device.idDevice')
                                 ->whereNull('device_patient.deleted_at');
                     })
-                    // ->leftjoin('device_patient', 'device.idDevice', '=', 'device_patient.Device')
                     ->leftjoin('patient', 'device_patient.Patient', '=', 'patient.idPatient')
                     ->leftjoin('user_profile', 'patient.User', '=', 'user_profile.User')
                     ->select(
