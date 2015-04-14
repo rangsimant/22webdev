@@ -25,7 +25,9 @@ body {
     <!-- ./ csrf token -->
     <!-- General tab -->
     <div class="tab-pane active" id="tab-general">
-
+        <!-- Notifications -->
+            @include('notifications')
+            <!-- ./ notifications -->
         <!-- username -->
         <div class="form-group {{{ $errors->has('username') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="username">Username</label>
@@ -93,7 +95,7 @@ body {
         <div class="form-group {{{ $errors->has('channel') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="channel">Channel</label>
             <div class="col-md-10">
-                <input style="text-transform: uppercase;" class="form-control" type="text" name="channel" id="channel" value="{{{ Input::old('channel', $user->channel) }}}" {{ (Auth::user()->channel == "normal")?"":"readonly" }}/>
+                <input style="text-transform: uppercase;" class="form-control" type="text" name="channel" id="channel" value="{{{ Input::old('channel', $user->channel) }}}" readonly/>
                 {{ $errors->first('channel', '<span class="help-inline">:message</span>') }}
             </div>
         </div>

@@ -1,0 +1,48 @@
+.table>caption+thead>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>th, .table>thead:first-child>tr:first-child>td
+{
+	padding: 7px;
+	text-align: left;
+}
+.panel-heading
+{
+	border-top-left-radius: 0px; 
+	border-top-right-radius: 0px; 
+}
+.ui-select
+{
+	margin: 0px;
+}
+.ui-select>select
+{
+	z-index: 1;
+}
+ul.alert > li
+{
+	margin-left: 15px
+}
+.devicetype.ui-select > select 
+{
+	min-width: 0;
+	width: 100%;
+	padding: 5px 15px 5px 10px;
+}
+.devicetype.ui-select 
+{
+	margin: 0px;
+	width: 50px;
+	display: -webkit-inline-box;
+	margin-right: 10px;
+}
+.file-preview-frame
+{
+	min-width: 100%;
+	margin: 0px;
+}
+.file-drop-zone-title
+{
+	font-size: 20px;
+}
+button.kv-file-upload.btn.btn-xs.btn-default, .file-upload-indicator
+{
+	display: none;
+}
