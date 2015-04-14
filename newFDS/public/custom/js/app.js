@@ -1,4 +1,5 @@
-var FDS = angular.module('FDS', ['ngTable']);
+var FDS = angular.module('FDS', ['ngTable','ngAnimate','ngSanitize','ngToast']);
+
 
 FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams){
 	$scope.$watch('baseUrl', function(){
@@ -43,7 +44,16 @@ FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams){
 	
 });
 
-FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTableParams){
+FDS.config(['ngToastProvider',
+    function(ngToast) {
+      ngToast.configure({
+      	animation: 'slide',
+        additionalClasses: 'my-animation',
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
+    }
+  ]).controller('DeviceList', function($rootScope, $scope, $http , $filter, ngTableParams, ngToast){
 
 
 	$scope.$watch('baseUrl', function(){
@@ -115,6 +125,15 @@ FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTabl
 		    });
 	}
 
+	$scope.notify = function(css, text)
+	{
+		ngToast.create({
+					className: css,
+					content: text,
+					dismissButton: true
+				});
+	}
+
 	$scope.unassign = function(idDevicePatient)
 	{
 		$http({
@@ -123,6 +142,8 @@ FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTabl
 			 }).
 			success(function(data) {
 				$scope.refreshTable();
+				var html = '<i class="fa fa-check"> '+data+'</i></div>';
+				$scope.notify('success',html);
             }).
 		 	error(function() {
                 console.log('error');

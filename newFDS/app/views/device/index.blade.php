@@ -42,7 +42,7 @@
 		                		<a  href="#Unassign" class="text-danger" title="Unassign" ng-click="unassign(device.idDevicePatient)"><small>Unassign</small></a> | 
 		                		<a  href="#Change" class="text-primary" title="Change"><small>Change</small></a>
 		                	</span>
-	                		<a ng-if="device.firstname == null" href="#Assign" class="text-primary" title="Assign"><small>Assign</small></a>
+	                		<a ng-if="device.firstname == null" href="#Assign" class="text-primary" title="Assign" ng-click="notify('','Assisn')"><small>Assign</small></a>
 	                	</div>
 	                </td>
 	                <td data-title="'Status'" sortable="'deleted_at'" width="5%">

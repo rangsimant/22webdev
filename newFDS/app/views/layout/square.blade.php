@@ -23,17 +23,24 @@
 		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-fileinput/css/fileinput.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('bower_components/angular-ngToast/ngtoast/dist/ngToast.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('bower_components/angular-ngToast/ngtoast/dist/ngToast-animations.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
 
 		<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
 		<script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 		<script src="{{ asset('bower_components/ng-table/dist/ng-table.min.js') }}"></script>
+		<script src="{{ asset('bower_components/angular-ngToast/angular-sanitize/angular-sanitize.min.js') }}"></script>
+		<script src="{{ asset('bower_components/angular-ngToast/angular-animate/angular-animate.min.js') }}"></script>
+		<script src="{{ asset('bower_components/angular-ngToast/ngtoast/dist/ngToast.min.js') }}"></script>
 		<script src="{{ asset('custom/js/app.js') }}"></script>
 		<script src="{{ asset('custom/js/devicetype.js') }}"></script>
 		<script src="{{ asset('bower_components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>
 	</head>
 
 	<body ng-app="FDS">
+	    <toast></toast>
+		
 		<div class="no-print">
             <section id="header" class="top-header ng-scope">
             	<header class="clearfix ng-scope">
