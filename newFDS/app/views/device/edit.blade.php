@@ -1,6 +1,10 @@
 @extends('layout.square')
 
 @section('content')
+@if (Session::has('message'))
+    <div class="alert alert-{{ Session::get('message-type', 'info') }}">{{ Session::get('message') }}</div>
+@endif
+
 <section class="panel panel-default table-dynamic">
 
 	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Edit Device</strong></div>

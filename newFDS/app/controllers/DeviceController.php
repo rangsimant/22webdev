@@ -86,7 +86,8 @@ class DeviceController extends BaseController
 							->update(Input::except('_method', '_token', 'status', 'idDevice'));
 			Device::changeStatusDevice($idDevice, $status);
 			
-			return Redirect::to('device');
+            Session::flash('message', 'Successfully updated Device!');
+			return Redirect::to('device/'.$idDevice.'/edit');
 	    }
 	}
 

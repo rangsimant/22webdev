@@ -70,12 +70,8 @@ FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTabl
 	$scope.deviceDelete = function()
 	{
 		$http({
-			  method  : 'Get',
-			  url     : $scope.baseUrl + '/device/' + $scope.idDevice + '/delete',
-			  data    : $scope.device,
-			  headers: {
-                'X-CSRF-Token': $scope.token
-            }
+			  method  : 'DELETE',
+			  url     : $scope.baseUrl + '/device/' + $scope.idDevice
 			 }).
 			success(function(data) {
 				$scope.refreshTable();
@@ -160,8 +156,8 @@ FDS.controller('DeviceTypeList',function($rootScope, $scope, $http , $filter, ng
 	$scope.devicetypeDelete = function()
 	{
 		$http({
-			  method  : 'Get',
-			  url     : $scope.baseUrl + '/devicetype/' + $scope.idDeviceType + '/delete'
+			  method  : 'DELETE',
+			  url     : $scope.baseUrl + '/devicetype/' + $scope.idDeviceType
 			 }).
 			success(function(data) {
 				$scope.refreshTable();
@@ -174,6 +170,80 @@ FDS.controller('DeviceTypeList',function($rootScope, $scope, $http , $filter, ng
 	$scope.dataTableDeviceType = function()
 	{
 		$scope.devicetypeTable = new ngTableParams({
+		        page: 1,            // show first page
+		        count: 10,           // count per page
+		        filter:{
+		        	status:''
+		        },
+		        sorting: {
+
+		        }
+		    }, {
+		        total: $scope.data[0].length, // length of data
+		        getData: function($defer, params) {
+		        	 // use build-in angular filter
+		            var orderedData = params.sorting() ? $filter('orderBy')($scope.data[0], params.orderBy()) : $scope.data[0];
+		            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+		            params.total(orderedData.length); // set total for recalc pagination
+		        }
+		    });
+	}
+	
+});
+
+FDS.controller('SensorList',function($rootScope, $scope, $http , $filter, ngTableParams){
+
+
+	$scope.$watch('baseUrl', function(){
+		$scope.getSensors();
+		$rootScope.token = $('input[name="_token"]').attr('value');
+	 });
+
+	$scope.getSensors = function()
+	{
+		$http.get($scope.baseUrl+"/getSensorList").
+		success(function(data, status, headers, config)
+		{
+			$scope.data = [];
+			$scope.data.push(data);
+			$scope.dataTableSensor();
+			console.log($scope.data);
+		}).
+		error(function(data, status, headers, config) 
+		{
+			console.log("ststus: "+status);
+		});
+	}
+
+	$scope.refreshTable = function()
+	{
+		$scope.getSensors();
+		$scope.sensorTable.sorting({ name:''});
+		console.log('Refresh table.');
+	}
+
+	$scope.getIDSensor = function(idSensor)
+	{
+		$scope.idSensor = idSensor;
+	}
+
+	$scope.sensorDelete = function()
+	{
+		$http({
+			  method  : 'DELETE',
+			  url     : $scope.baseUrl + '/sensor/'+$scope.idSensor,
+			 }).
+			success(function(data) {
+				$scope.refreshTable();
+            }).
+		 	error(function() {
+                console.log('error');
+            });
+	}
+
+	$scope.dataTableSensor = function()
+	{
+		$scope.sensorTable = new ngTableParams({
 		        page: 1,            // show first page
 		        count: 10,           // count per page
 		        filter:{

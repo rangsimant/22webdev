@@ -127,7 +127,7 @@
 	                        <label for=""></label>
 	                    </div>
 	                    <div class="col-sm-10">
-	                    	<button type="reset" class="btn btn-default" style="margin-right: 10px;">Clear</button>
+		            		<a href="{{ URL::to('devicetype') }}" class="btn btn-default">Cencel</a>
 	                    	<button type="submit" class="btn btn-primary">Create</button>
 	                    </div>
 	                </div>

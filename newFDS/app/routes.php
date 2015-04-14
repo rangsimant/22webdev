@@ -21,13 +21,14 @@ Route::group(array('before' => 'auth'), function()
 	Route::resource('patient','PatientController');
 	Route::resource('device','DeviceController');
 	Route::resource('devicetype','DeviceTypeController');
+	Route::resource('sensor','SensorController');
 
 	// Ajax Route
 	Route::get('getPatientList','PatientController@getPatient');
 	Route::get('getDeviceList','DeviceController@getDevice');
 	Route::get('getDeviceTypeList','DeviceTypeController@getDeviceType');
-	Route::get('device/{idDevice}/delete','DeviceController@destroy');
-	Route::get('devicetype/{idDeviceType}/delete','DeviceTypeController@destroy');
+	Route::get('getSensorList','SensorController@getSensor');
+
 	Route::get('devicetype/addsensor/{chaneel}/{name}', 'DeviceTypeController@addNewSensor');
 	Route::post('devicetype/uploadPhoto', 'DeviceTypeController@uploadPhoto');
 	Route::delete('devicetype/{idDeviceType}/deletePhoto', 'DeviceTypeController@deletePhoto');

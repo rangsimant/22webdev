@@ -2,10 +2,10 @@
 
 @section('content')
 <section class="panel panel-default table-dynamic">
-	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Device Type</strong></div>
-	<div class="" ng-controller="DeviceTypeList" ng-init="baseUrl='{{ URL::to('/') }}'">
+	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Sensor</strong></div>
+	<div class="" ng-controller="SensorList" ng-init="baseUrl='{{ URL::to('/') }}'">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" ng-model="csrf"/>
-		<div class="table-filters">
+	    <div class="table-filters">
 	        <div class="row">
 	            <div class="col-sm-4 col-xs-6">
 	                <form class="ng-pristine ng-valid">
@@ -17,37 +17,32 @@
 	            </div>
 	            <div class="col-sm-4 col-xs-6 filter-result-info" ng-cloak>
                     <span class="ng-binding">
-                       All device @{{ devicetypeTable.total() }} entries
+                       All sensor @{{ sensorTable.total() }} entries
                     </span>              
                 </div>
                 <div class="col-sm-4 col-xs-6">
-                	<a href="{{ URL::to('devicetype/create') }}" class="btn btn-default pull-right" title="New Device"><i class="fa fa-tags"></i> New Device type</a>
+                	<a href="{{ URL::to('sensor/create') }}" class="btn btn-default pull-right" title="New Sensor"><i class="fa fa-wifi"></i> New Sensor</a>
                 	<a href="#Reload" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
                 </div>
 	        </div>
 	    </div>
-		<table class="table table-bordered table-striped table-responsive table-hover" ng-table="devicetypeTable" template-pagination="custom/pager" class="table">
+		<table class="table table-bordered table-striped table-responsive table-hover" ng-table="sensorTable" template-pagination="custom/pager" class="table">
 
-	            <tr ng-repeat="devicetype in $data | filter:filter as display" ng-cloak>
-	                <td data-title="'Photo'" width="5%" align="center">
-	                	<img ng-src="@{{ devicetype.photo }}" class="img-circle img30_30" ng-cloak>
-	                </td>
-	                <td data-title="'Devicetype name'" sortable="'name'" width="25%">@{{ devicetype.name }}</td>
-	                <td data-title="'Description'" sortable="'description'" width="30%">@{{ devicetype.description }}</td>
-	                <td data-title="'Manufacturer'" sortable="'manufacturer'" width="25%">@{{ devicetype.manufacturer }}</td>
+	            <tr ng-repeat="sensor in $data | filter:filter as display" ng-cloak>
+	                <td data-title="'Sensor name'" sortable="'name'" width="30%">@{{ sensor.name }}</td>
+	                <td data-title="'Number of channels'" sortable="'numberOfChannels'" width="30%">@{{ sensor.numberOfChannels }}</td>
 	                <td width="15%">
 	                	<span>
-	                		<a href="{{ URL::to('devicetype') }}/@{{ devicetype.idDeviceType }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
+	                		<a href="{{ URL::to('sensor') }}/@{{ sensor.idSensor }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
 	                	</span>
 	                	<span>
-	                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#devicetypeDelete" ng-click="getIDDeviceType(devicetype.idDeviceType)">Delete</a>
+	                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#sensorDelete" ng-click="getIDSensor(sensor.idSensor)">Delete</a>
 	                	</span>
 	                </td>
 	            </tr>
 	    </table>
-
-	    <!-- Modal -->
-	    <div class="modal fade" id="devicetypeDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	     <!-- Modal -->
+	    <div class="modal fade" id="sensorDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -59,7 +54,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="devicetypeDelete()">Confirm</button>
+		        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="sensorDelete()">Confirm</button>
 		      </div>
 		    </div>
 		  </div>

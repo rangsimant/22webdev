@@ -75,7 +75,7 @@
 	            </div>
 	            <div class="col-sm-10">
 	            	<span>
-		                <button type="reset" class="btn btn-default">Reset</button>
+	            		<a href="{{ URL::to('device') }}" class="btn btn-default">Cencel</a>
 		                <button type="submit" class="btn btn-primary">Create</button>
 	            	</span>
 	            </div>
