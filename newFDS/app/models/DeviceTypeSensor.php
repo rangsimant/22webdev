@@ -18,8 +18,9 @@ class DeviceTypeSensor extends Eloquent
                 $sensorArray['Sensor'] = $value['id'];
                 $sensorArray['numberOfChannel'] = isset($value['numberOfChannel'])?$value['numberOfChannel']:1;
                 $affectedRow[] = DeviceTypeSensor::create($sensorArray);
+                return $affectedRow;
             }
         }
-        return $affectedRow;
+        return 'Mapping fail.';
     }
 }

@@ -104,7 +104,7 @@
 				        <li class="{{ (Request::segment(1)=='monitor')? 'active' : '' }}"><a href="{{ URL::to('monitor') }}"> <i class="fa fa-desktop"></i><span >Monitor</span> </a></li>
 				        <li class="{{ (Request::segment(1)=='device' || Request::segment(1)=='devicetype' || Request::segment(1)=='sensor')? 'active' : '' }}">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Device" aria-expanded="true" aria-controls="Device">
-				            	<i class="fa fa-tag"></i><span>Device</span>
+				            	<i class="fa fa-tag"></i><span>Device Management</span>
 				            </a>
 				            <ul id="Device" class="panel-collapse collapse">
 				                <li class="{{ (Request::segment(1)=='device')? 'active' : '' }}"><a href="{{ URL::to('device') }}"><i class="fa fa-caret-right"></i><span>Device</span></a></li>
@@ -115,16 +115,17 @@
 					    </li>
 					    <li class="{{ (Request::segment(1)=='patient')? 'active' : '' }}">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Patient" aria-expanded="true" aria-controls="Patient">
-				            	<i class="fa fa-wheelchair"></i><span>Patient</span>
+				            	<i class="fa fa-wheelchair"></i><span>Patient Management</span>
 				            </a>
 				            <ul id="Patient" class="panel-collapse collapse">
 				                <li class="{{ (Request::segment(1)=='patient')? 'active' : '' }}"><a href="{{ URL::to('patient') }}"><i class="fa fa-caret-right"></i><span>Patient</span></a></li>
+				                <li class="{{ (Request::segment(1)=='devicepatient')? 'active' : '' }}"><a href="{{ URL::to('devicepatient') }}"><i class="fa fa-caret-right"></i><span>Assign Device</span></a></li>
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>
 					    <li class="">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Physician" aria-expanded="true" aria-controls="Physician">
-				            	<i class="fa fa-user-md"></i><span>Physician</span>
+				            	<i class="fa fa-user-md"></i><span>Physician Management</span>
 				            </a>
 				            <ul id="Physician" class="panel-collapse collapse">
 				                <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Physician</span></a></li>
@@ -132,7 +133,7 @@
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>
 					     <li class="">
-				            <a data-toggle="collapse" data-parent="#accordion" href="#Location" aria-expanded="true" aria-controls="Location"><i class="fa fa-location-arrow"></i><span>Location</span></a>
+				            <a data-toggle="collapse" data-parent="#accordion" href="#Location" aria-expanded="true" aria-controls="Location"><i class="fa fa-location-arrow"></i><span>Location Management</span></a>
 				            <ul id="Location" class="panel-collapse collapse">
 				                <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Location</span></a></li>
 				                <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Map</span></a></li>

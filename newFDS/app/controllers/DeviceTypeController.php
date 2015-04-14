@@ -109,7 +109,7 @@ class DeviceTypeController extends BaseController
 		return DeviceType::getDeviceTypeList();
 	}
 
-	 public function addNewSensor($channel, $name)
+	public function addNewSensor($channel, $name)
     {
         $sensor = array(
             'name' => $name,
@@ -120,6 +120,10 @@ class DeviceTypeController extends BaseController
         return $affectedRow;
     }
    
+    public function unassign($idDevicePatient)
+    {
+        return DevicePatient::unassign($idDevicePatient);
+    }
     public function deletePhoto($idDeviceType)
     {
     	$deletePhoto = DeviceType::deletePhoto($idDeviceType);

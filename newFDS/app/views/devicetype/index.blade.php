@@ -17,7 +17,7 @@
 	            </div>
 	            <div class="col-sm-4 col-xs-6 filter-result-info" ng-cloak>
                     <span class="ng-binding">
-                       All device @{{ devicetypeTable.total() }} entries
+                       All device type @{{ devicetypeTable.total() }} entries
                     </span>              
                 </div>
                 <div class="col-sm-4 col-xs-6">
@@ -32,7 +32,7 @@
 	                <td data-title="'Photo'" width="5%" align="center">
 	                	<img ng-src="@{{ devicetype.photo }}" class="img-circle img30_30" ng-cloak>
 	                </td>
-	                <td data-title="'Devicetype name'" sortable="'name'" width="25%">@{{ devicetype.name }}</td>
+	                <td data-title="'Device type name'" sortable="'name'" width="25%">@{{ devicetype.name }}</td>
 	                <td data-title="'Description'" sortable="'description'" width="30%">@{{ devicetype.description }}</td>
 	                <td data-title="'Manufacturer'" sortable="'manufacturer'" width="25%">@{{ devicetype.manufacturer }}</td>
 	                <td width="15%">

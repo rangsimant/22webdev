@@ -32,9 +32,19 @@
 	                <td data-title="'Photo'" width="5%" align="center">
 	                	<img ng-src="@{{ device.photo }}" class="img-circle img30_30" ng-cloak>
 	                </td>
-	                <td data-title="'Device name'" sortable="'name'" width="30%">@{{ device.name }}</td>
-	                <td data-title="'Type'" sortable="'typename'" width="10%">@{{ device.typename }}</td>
+	                <td data-title="'Device name'" sortable="'name'" width="20%">@{{ device.name }}</td>
+	                <!-- <td data-title="'Type'" sortable="'typename'" width="10%">@{{ device.typename }}</td> -->
 	                <td data-title="'Description'" sortable="'description'" width="30%">@{{ device.description }}</td>
+	                <td data-title="'Assigned'" sortable="'firstname'" width="25%">
+	                	<span>@{{ device.firstname }} @{{ device.lastname }}</span>
+	                	<div class="assign">
+	                		<span ng-if="device.firstname != null && device.assign == null">
+		                		<a  href="#Unassign" class="text-danger" title="Unassign" ng-click="unassign(device.idDevicePatient)"><small>Unassign</small></a> | 
+		                		<a  href="#Change" class="text-primary" title="Change"><small>Change</small></a>
+		                	</span>
+	                		<a ng-if="device.firstname == null" href="#Assign" class="text-primary" title="Assign"><small>Assign</small></a>
+	                	</div>
+	                </td>
 	                <td data-title="'Status'" sortable="'deleted_at'" width="5%">
 	                	<span ng-if="device.status == 'Activate'" class="text-success">@{{ device.status }}</span>
 	                	<span ng-if="device.status == 'Deactivate'" class="text-danger">@{{ device.status }}</span>
@@ -101,4 +111,11 @@
 	    </script>
 	</div>
 </section>
+<script type="text/javascript">
+$(function(){
+	$('tbody>tr.ng-scope').click(function(){
+		alert('ss');
+	})
+})
+</script>
 @stop

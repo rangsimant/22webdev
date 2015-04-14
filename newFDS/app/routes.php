@@ -29,8 +29,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('getDeviceList','DeviceController@getDevice');
 	Route::get('getDeviceTypeList','DeviceTypeController@getDeviceType');
 	Route::get('getSensorList','SensorController@getSensor');
-
 	Route::get('devicetype/addsensor/{chaneel}/{name}', 'DeviceTypeController@addNewSensor');
+	Route::get('devicetype/{idDevicePatient}/unassign', 'DeviceTypeController@unassign');
 	Route::post('devicetype/uploadPhoto', 'DeviceTypeController@uploadPhoto');
 	Route::delete('devicetype/{idDeviceType}/deletePhoto', 'DeviceTypeController@deletePhoto');
 });

@@ -27,16 +27,29 @@ class Device extends Eloquent
     public static function getDeviceList()
     {
     	$device = DB::table('device')
-                    ->join('devicetype', 'device.DeviceType', '=', 'devicetype.idDeviceType')
+                    ->leftjoin('devicetype', 'device.DeviceType', '=', 'devicetype.idDeviceType')
+                    ->leftjoin('device_patient', function($join){
+                        $join->on('device_patient.Device', '=', 'device.idDevice')
+                                ->whereNull('device_patient.deleted_at');
+                    })
+                    // ->leftjoin('device_patient', 'device.idDevice', '=', 'device_patient.Device')
+                    ->leftjoin('patient', 'device_patient.Patient', '=', 'patient.idPatient')
+                    ->leftjoin('user_profile', 'patient.User', '=', 'user_profile.User')
                     ->select(
                             'device.idDevice', 
+                            'patient.patient_id', 
+                            'user_profile.firstname',
+                            'user_profile.lastname',
                             'device.name', 
                             'device.description', 
+                            'device_patient.idDevicePatient', 
                             'devicetype.name as typename', 
                             'devicetype.photo',
                             'device.created_at',
-                            'device.deleted_at'
+                            'device.deleted_at',
+                            'device_patient.deleted_at as assign'
                             )
+                    ->groupBy('idDevice')
                     ->orderBy('device.created_at', 'DESC')
                     ->get();
 		foreach ($device as $key => $value) {

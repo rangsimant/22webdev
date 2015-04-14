@@ -114,6 +114,20 @@ FDS.controller('DeviceList',function($rootScope, $scope, $http , $filter, ngTabl
 		        }
 		    });
 	}
+
+	$scope.unassign = function(idDevicePatient)
+	{
+		$http({
+			  method  : 'GET',
+			  url     : $scope.baseUrl + '/devicetype/' + idDevicePatient + '/unassign'
+			 }).
+			success(function(data) {
+				$scope.refreshTable();
+            }).
+		 	error(function() {
+                console.log('error');
+            });
+	}
 	
 });
 
