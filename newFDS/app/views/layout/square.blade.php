@@ -101,7 +101,7 @@
 		    <aside id="nav-container" class="ng-scope">        
 				<div id="nav-wrapper" class="ng-scope">
 				    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><ul id="nav" class="ng-scope" style="overflow: hidden; width: auto; height: 100%;"  id="accordion" role="tablist" aria-multiselectable="true">
-				        <li class="{{ (Request::segment(1)=='monitor')? 'active' : '' }}"><a href="#monitor"> <i class="fa fa-desktop"></i><span >Monitor</span> </a></li>
+				        <li class="{{ (Request::segment(1)=='monitor')? 'active' : '' }}"><a href="{{ URL::to('monitor') }}"> <i class="fa fa-desktop"></i><span >Monitor</span> </a></li>
 				        <li class="{{ (Request::segment(1)=='device' || Request::segment(1)=='devicetype' || Request::segment(1)=='sensor')? 'active' : '' }}">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Device" aria-expanded="true" aria-controls="Device">
 				            	<i class="fa fa-tag"></i><span>Device</span>

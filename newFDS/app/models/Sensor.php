@@ -14,12 +14,4 @@ class Sensor extends Eloquent
 								'numberOfChannels' => 'numeric'
 							);
 
-
-    // public static function getDeviceList()
-    // {
-    // 	$sensor = DB::table('sensor')
-    //                 ->orderBy('device.created_at', 'DESC')
-    //                 ->get();
-    // 	return $sensor;
-    // }
 }

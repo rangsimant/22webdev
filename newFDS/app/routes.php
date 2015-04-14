@@ -22,6 +22,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::resource('device','DeviceController');
 	Route::resource('devicetype','DeviceTypeController');
 	Route::resource('sensor','SensorController');
+	Route::resource('monitor','MonitorController');
 
 	// Ajax Route
 	Route::get('getPatientList','PatientController@getPatient');
