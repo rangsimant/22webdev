@@ -81,8 +81,7 @@ class DeviceTypeController extends BaseController
         	DeviceType::savePhoto($idDeviceType);
             DeviceType::where('idDeviceType',$idDeviceType)->update(Input::except("_token","_method","sensor", "idDeviceType", "photo"));
             DeviceTypeSensor::where('DeviceType',$idDeviceType)->delete();
-            DeviceTypeSensor::mapping($sensor, $idDeviceType);
-            
+            $sensor = DeviceTypeSensor::mapping($sensor, $idDeviceType);
             Session::flash('message', 'Successfully updated Device Type!');
             return Redirect::to('devicetype/'.$idDeviceType.'/edit');
         }

@@ -12,15 +12,15 @@ class DeviceTypeSensor extends Eloquent
     public static function mapping($sensor, $idDeviceType)
     {
     	$sensorArray = array();
+        $affectedRow = array();
         foreach ($sensor as $value) {
             if (isset($value['id'])) {
                 $sensorArray['DeviceType'] = $idDeviceType;
                 $sensorArray['Sensor'] = $value['id'];
                 $sensorArray['numberOfChannel'] = isset($value['numberOfChannel'])?$value['numberOfChannel']:1;
-                $affectedRow[] = DeviceTypeSensor::create($sensorArray);
-                return $affectedRow;
+                $affectedRow[] = self::create($sensorArray);
             }
         }
-        return 'Mapping fail.';
+        return $affectedRow;
     }
 }

@@ -75,11 +75,14 @@ FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams, ng
 
 FDS.controller('DeviceList', function($rootScope, $scope, $http , $filter, ngTableParams, ngToast){
 
-
 	$scope.$watch('baseUrl', function(){
 		$scope.getDevices();
 		$rootScope.token = $('input[name="_token"]').attr('value');
 	 });
+
+	$('#deviceAssign').on('hidden.bs.modal', function (e) {
+	  	$scope.refreshTable();
+	})
 
 	$scope.getDevices = function()
 	{
