@@ -50,12 +50,9 @@
 	                	<span ng-if="device.status == 'Deactivate'" class="text-danger">@{{ device.status }}</span>
 	                </td>
 	                <td width="15%">
-	                	<span>
-	                		<a href="{{ URL::to('device') }}/@{{ device.idDevice }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
-	                	</span>
-	                	<span>
-	                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#deviceDelete" ng-click="getIDDevice(device.idDevice)">Delete</a>
-	                	</span>
+                		<a href="{{ URL::to('device') }}/@{{ device.idDevice }}/history" class="btn btn-default btn-xs" title="History">History</a>
+                		<a href="{{ URL::to('device') }}/@{{ device.idDevice }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
+                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#deviceDelete" ng-click="getIDDevice(device.idDevice)">Delete</a>
 	                </td>
 	            </tr>
 	    </table>
