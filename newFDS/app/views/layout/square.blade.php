@@ -126,7 +126,6 @@
 				            </a>
 				            <ul id="Patient" class="panel-collapse collapse">
 				                <li class="{{ (Request::segment(1)=='patient')? 'active' : '' }}"><a href="{{ URL::to('patient') }}"><i class="fa fa-caret-right"></i><span>Patient</span></a></li>
-				                <li class="{{ (Request::segment(1)=='devicepatient')? 'active' : '' }}"><a href="{{ URL::to('devicepatient') }}"><i class="fa fa-caret-right"></i><span>Assign Device</span></a></li>
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>

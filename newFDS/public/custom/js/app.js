@@ -1,7 +1,16 @@
-var FDS = angular.module('FDS', ['ngTable','ngAnimate','ngSanitize','ngToast']);
+var FDS = angular.module('FDS', ['ngTable','ngAnimate','ngSanitize','ngToast']).config(['ngToastProvider',
+    function(ngToast) {
+      ngToast.configure({
+      	animation: 'slide',
+        additionalClasses: 'my-animation',
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
+    }
+  ]);
 
 
-FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams){
+FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams, ngToast){
 	$scope.$watch('baseUrl', function(){
 		$scope.getPatients();
 	 });
@@ -18,6 +27,12 @@ FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams){
 		{
 			console.log("ststus: "+status);
 		});
+	}
+	$scope.refreshTable = function()
+	{
+		$scope.getPatients();
+		$scope.patientTable.sorting({ firstname:''});
+		console.log('Refresh table.');
 	}
 
 	$scope.dataTablePatient = function(data)
@@ -41,19 +56,24 @@ FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams){
 		        }
 		    });
 	}
+
+	$scope.assign = function(idPatient)
+	{
+		$scope.notify('success', 'Assign device to '+idPatient);
+	}
+
+	$scope.notify = function(css, text)
+	{
+		ngToast.create({
+					className: css,
+					content: text,
+					dismissButton: true
+				});
+	}
 	
 });
 
-FDS.config(['ngToastProvider',
-    function(ngToast) {
-      ngToast.configure({
-      	animation: 'slide',
-        additionalClasses: 'my-animation',
-        horizontalPosition: 'right',
-        verticalPosition: 'bottom'
-      });
-    }
-  ]).controller('DeviceList', function($rootScope, $scope, $http , $filter, ngTableParams, ngToast){
+FDS.controller('DeviceList', function($rootScope, $scope, $http , $filter, ngTableParams, ngToast){
 
 
 	$scope.$watch('baseUrl', function(){

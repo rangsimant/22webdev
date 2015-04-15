@@ -42,7 +42,7 @@
 		                		<a  href="#Unassign" class="text-danger" title="Unassign" ng-click="unassign(device.idDevicePatient)"><small>Unassign</small></a> | 
 		                		<a  href="#Change" class="text-primary" title="Change"><small>Change</small></a>
 		                	</span>
-	                		<a ng-if="device.firstname == null" href="#Assign" class="text-primary" title="Assign" ng-click="notify('','Assisn')"><small>Click to Assign</small></a>
+	                		<a ng-if="device.firstname == null" href="#Assign" class="text-primary" title="Assign" data-toggle="modal" data-target="#deviceAssign"><small>Click to Assign</small></a>
 	                	</div>
 	                </td>
 	                <td data-title="'Status'" sortable="'deleted_at'" width="5%">
@@ -59,8 +59,92 @@
 	                </td>
 	            </tr>
 	    </table>
+	    <!-- Modal Assign-->
+    <div class="modal fade" id="deviceAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Assign Device</h4>
+	      </div>
+	      <div class="modal-body" ng-controller="PatientList" ng-init="baseUrl='{{ URL::to('/') }}'">
+	      	<div class="table-filters">
+		        <div class="row">
+		            <div class="col-sm-4 col-xs-6">
+		                <form class="ng-pristine ng-valid">
+		                	<div class="input-group">
+						        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+			                    <input type="text" placeholder="Search..." class="form-control ng-pristine ng-valid" ng-model="filter_patient" ng-keyup="search()">
+						    </div>
+		                </form>
+		            </div>
+		            <div class="col-sm-4 col-xs-6 filter-result-info" ng-cloak>
+	                    <span class="ng-binding">
+	
+	                    </span>              
+	                </div>
+	                <div class="col-sm-4 col-xs-6">
+	                	<a href="{{ URL::to('patient/create') }}" class="btn btn-default pull-right" title="New Patient"><i class="fa fa-wheelchair"></i> New Patient</a>
+	                	<a href="#Reload" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                </div>
+		        </div>
+			</div>
+	        <table class="table table-bordered table-striped table-responsive table-hover" ng-table="patientTable" template-pagination="custom/pager" class="table">
+		            <tr ng-repeat="patient in $data | filter:filter_patient as patient" ng-cloak>
+		                <td data-title="'Photo'" width="5%" align="center">
+		                	<img ng-src="@{{ patient.photo }}" class="img-circle img30_30" ng-cloak>
+		                </td>
+		                <td data-title="'Patient ID'" sortable="'patient_id'" width="30%">@{{ patient.patient_id }}</td>
+		                <td data-title="'Firstname'" sortable="'firstname'" width="30%">@{{ patient.firstname }}</td>
+		                <td data-title="'Lastname'" sortable="'lastname'" width="30%">@{{ patient.lastname }}</td>
+		                <td width="15%">
+		                	<span>
+		                		<a href="#Assign" class="text-primary" title="Select Patient" ng-click="assign(patient.idPatient)">Select</a>
+		                	</span>
+		                </td>
+		            </tr>
+		    </table>
+	    	<script type="text/ng-template" id="custom/pager">
+			    <footer class="table-footer">
+		            <div class="row">
+		                <div class="col-md-6 page-num-info">
+			                <span>
+		                        Show 
+		    	                <select ng-change="params.count(showlist)" ng-model="showlist">
+				                	<option value="3">3</option>
+				                	<option value="5">5</option>
+				                	<option value="10" ng-selected="true">10</option>
+				                	<option value="20">20</option>
+				                </select> 
+				                 entries per page
+		                    </span>                
+		                </div>
+		                <div class="col-md-6 text-right pagination-container">
+					        <ul class="pagination-sm pagination ng-isolate-scope ng-pristine ng-valid">
+						        <li ng-class="{'disabled': !page.active }" ng-repeat="page in pages" ng-switch="page.type">
+						            <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">Previous</a>
+					                <a ng-switch-when="first" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>
+					                <a ng-switch-when="page" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>
+					                <a ng-switch-when="more" ng-click="params.page(page.number)" href="">&#8230;</a>
+					                <a ng-switch-when="last" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>
+					                <a ng-switch-when="next" ng-click="params.page(page.number)" href="">Next</a>
+						        </li>
+					        </ul>
+		                </div>
+		            </div>
+		        </footer>
+		    </script>
 
-	    <!-- Modal -->
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="refreshTable()">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    <!-- ./ Modal -->
+
+	    <!-- Modal Delete-->
 	    <div class="modal fade" id="deviceDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
@@ -80,7 +164,7 @@
 		</div>
 	    <!-- ./ Modal -->
     	<script type="text/ng-template" id="custom/pager">
-		    <footer class="table-footer">
+		   	<footer class="table-footer">
 	            <div class="row">
 	                <div class="col-md-6 page-num-info">
 		                <span>
@@ -111,11 +195,4 @@
 	    </script>
 	</div>
 </section>
-<script type="text/javascript">
-$(function(){
-	$('tbody>tr.ng-scope').click(function(){
-		alert('ss');
-	})
-})
-</script>
 @stop

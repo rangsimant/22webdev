@@ -7,7 +7,7 @@
 		<div id="monitor" class="clearfix">
 			<img src="{{ URL::to('uploads/map/'.$map->filename) }}" class="img-map img-responsive" id="monitor">
 			@foreach($router as $key => $value)
-          	<div style="top:{{($value->y * 10)/100}}%;left:{{($value->x*10)/100}}%;" class="iconRouter">
+          	<div style="top:{{$value->y}}px;left:{{$value->x}}px;" class="iconRouter">
 	          	<p class="badge badge-info">{{$value->name}}</p>
 	          	<div class="text-center">
 		          	<i class="fa fa-wifi wifi-router icon-router fa-3x" data-toggle="tooltip" data-placement="top" title="{{$value->name}}" id="{{$value->idRouter}}"></i>
@@ -18,10 +18,4 @@
       	</div>
 	</div>
 </section>
-
-<script type="text/javascript">
-$(function(){
-
-})
-</script>
 @stop

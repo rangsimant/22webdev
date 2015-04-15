@@ -20,6 +20,7 @@ class Patient extends Eloquent
                     ->join('user_profile', 'patient.User', '=', 'user_profile.User')
                     ->select(
                             'patient.idPatient', 
+                            'patient.patient_id', 
                             'user_profile.firstname', 
                             'user_profile.lastname', 
                             'user_profile.gender', 
