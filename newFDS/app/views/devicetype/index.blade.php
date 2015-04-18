@@ -16,9 +16,9 @@
 	                </form>
 	            </div>
 	            <div class="col-sm-4 col-xs-6 filter-result-info" ng-cloak>
-                    <span class="ng-binding">
-                       All device type @{{ devicetypeTable.total() }} entries
-                    </span>              
+                   <!--  <span class="ng-binding">
+                       Device type has @{{ devicetypeTable.total() }} entries
+                    </span>   -->            
                 </div>
                 <div class="col-sm-4 col-xs-6">
                 	<a href="{{ URL::to('devicetype/create') }}" class="btn btn-default pull-right" title="New Device"><i class="fa fa-tags"></i> New Device type</a>

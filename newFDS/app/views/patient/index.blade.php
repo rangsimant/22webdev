@@ -16,9 +16,9 @@
 	                </form>
 	            </div>
 	            <div class="col-sm-4 col-xs-6 filter-result-info" ng-cloak>
-                    <span class="ng-binding">
+                   <!--  <span class="ng-binding">
                        All patient @{{ patientTable.total() }} persons
-                    </span>              
+                    </span>       -->        
                 </div>
                 <div class="col-sm-4 col-xs-6">
                 	<a href="{{ URL::to('patient/create') }}" class="btn btn-default pull-right" title="New Patient"><i class="fa fa-wheelchair"></i> New Patient</a>
@@ -31,8 +31,9 @@
 	                <td data-title="'Photo'" width="5%" align="center">
 	                	<img ng-src="@{{ patient.photo }}" class="img-circle img30_30" ng-cloak>
 	                </td>
-	                <td data-title="'Firstname'" sortable="'firstname'" width="30%">@{{ patient.firstname }}</td>
-	                <td data-title="'Lastname'" sortable="'lastname'" width="30%">@{{ patient.lastname }}</td>
+	                <td data-title="'Name'" sortable="'firstname'" width="30%">@{{ patient.firstname }} @{{ patient.lastname }}</td>
+	               <!--  <td data-title="'Firstname'" sortable="'firstname'" width="30%">@{{ patient.firstname }}</td>
+	                <td data-title="'Lastname'" sortable="'lastname'" width="30%">@{{ patient.lastname }}</td> -->
 	                <td data-title="'Gender'" sortable="'gender'" width="15%">@{{ patient.gender }}</td>
 	                <td width="15%">
 	                	<span>

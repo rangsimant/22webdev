@@ -16,9 +16,9 @@
 	                </form>
 	            </div>
 	            <div class="col-sm-4 col-xs-6 filter-result-info" ng-cloak>
-                    <span class="ng-binding">
-                       All device @{{ deviceTable.total() }} entries
-                    </span>              
+                    <!-- <span class="ng-binding">
+                       Device has @{{ deviceTable.total() }} entries
+                    </span>   -->            
                 </div>
                 <div class="col-sm-4 col-xs-6">
                 	<a href="{{ URL::to('device/create') }}" class="btn btn-default pull-right" title="New Device"><i class="fa fa-tag"></i> New Device</a>
@@ -32,10 +32,16 @@
 	                <td data-title="'Photo'" width="5%" align="center">
 	                	<img ng-src="@{{ device.photo }}" class="img-circle img30_30" ng-cloak>
 	                </td>
-	                <td data-title="'Device name'" sortable="'name'" width="20%">@{{ device.name }}</td>
+	                <td data-title="'Device name'" sortable="'name'" width="15%">
+	                	@{{ device.name }}
+	                	<br>
+	                	<small>
+	                		@{{ device.typename }}
+	                	</small>
+	                </td>
 	                <!-- <td data-title="'Type'" sortable="'typename'" width="10%">@{{ device.typename }}</td> -->
 	                <td data-title="'Description'" sortable="'description'" width="30%">@{{ device.description }}</td>
-	                <td data-title="'Assigned'" sortable="'firstname'" width="25%">
+	                <td data-title="'Action'" sortable="'assign'" width="20%">
 	                	<span>@{{ device.firstname }} @{{ device.lastname }}</span>
 	                	<div class="assign">
 	                		<span ng-if="device.firstname != null && device.assign == null">
@@ -46,10 +52,10 @@
 	                	</div>
 	                </td>
 	                <td data-title="'Status'" sortable="'deleted_at'" width="5%">
-	                	<span ng-if="device.status == 'Activate'" class="text-success">@{{ device.status }}</span>
-	                	<span ng-if="device.status == 'Deactivate'" class="text-danger">@{{ device.status }}</span>
+	                	<span ng-if="device.status == 'Available'" class="text-success">@{{ device.status }}</span>
+	                	<span ng-if="device.status == 'Unavailable'" class="text-danger">@{{ device.status }}</span>
 	                </td>
-	                <td width="15%">
+	                <td width="20%">
                 		<a href="{{ URL::to('device') }}/@{{ device.idDevice }}/history" class="btn btn-default btn-xs" title="History">History</a>
                 		<a href="{{ URL::to('device') }}/@{{ device.idDevice }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
                 		<a href="#delete" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#deviceDelete" ng-click="getIDDevice(device.idDevice)">Delete</a>

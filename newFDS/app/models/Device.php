@@ -63,11 +63,11 @@ class Device extends Eloquent
 
 			if ($value->deleted_at == null) 
 			{
-				$device[$key]->status = 'Activate';
+				$device[$key]->status = 'Available';
 			}
 			else
 			{
-				$device[$key]->status = 'Deactivate';
+				$device[$key]->status = 'Unavailable';
 			}
 		}
     	return $device;
