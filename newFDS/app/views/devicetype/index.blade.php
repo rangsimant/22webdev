@@ -21,8 +21,10 @@
                     </span>   -->            
                 </div>
                 <div class="col-sm-4 col-xs-6">
-                	<a href="{{ URL::to('devicetype/create') }}" class="btn btn-default pull-right" title="New Device"><i class="fa fa-tags"></i> New Device type</a>
-                	<a href="javascriptA:void(0)" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                <span class="pull-right">
+	                	<a href="javascriptA:void(0)" class="btn btn-default" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                	<a href="{{ URL::to('devicetype/create') }}" class="btn btn-default" title="New Device"><i class="fa fa-tags"></i> New Device type</a>
+	                </span>
                 </div>
 	        </div>
 	    </div>

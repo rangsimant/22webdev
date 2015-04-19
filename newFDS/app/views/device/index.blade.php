@@ -21,8 +21,10 @@
                     </span>   -->            
                 </div>
                 <div class="col-sm-4 col-xs-6">
-                	<a href="{{ URL::to('device/create') }}" class="btn btn-default pull-right" title="New Device"><i class="fa fa-tag"></i> New Device</a>
-                	<a href="javascriptA:void(0)" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                <span class="pull-right">
+	                	<a href="javascriptA:void(0)" class="btn btn-default" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                	<a href="{{ URL::to('device/create') }}" class="btn btn-default" title="New Device"><i class="fa fa-tag"></i> New Device</a>
+	                </span>
                 </div>
 	        </div>
 	    </div>
@@ -87,8 +89,10 @@
 	                    </span>              
 	                </div>
 	                <div class="col-sm-4 col-xs-6">
-	                	<a href="{{ URL::to('patient/create') }}" class="btn btn-default pull-right" title="New Patient"><i class="fa fa-wheelchair"></i> New Patient</a>
-	                	<a href="javascriptA:void(0)" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                <span class="pull-right">
+	                	<a href="javascriptA:void(0)" class="btn btn-default" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                	<a href="{{ URL::to('patient/create') }}" class="btn btn-default" title="New Patient"><i class="fa fa-wheelchair"></i> New Patient</a>
+	                </span>
 	                </div>
 		        </div>
 			</div>

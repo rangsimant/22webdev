@@ -21,8 +21,10 @@
                     </span>              
                 </div>
                 <div class="col-sm-4 col-xs-6">
-                	<a href="{{ URL::to('sensor/create') }}" class="btn btn-default pull-right" title="New Sensor"><i class="fa fa-wifi"></i> New Sensor</a>
-                	<a href="javascriptA:void(0)" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                 <span class="pull-right">
+	                	<a href="javascriptA:void(0)" class="btn btn-default" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+	                	<a href="{{ URL::to('sensor/create') }}" class="btn btn-default" title="New Sensor"><i class="fa fa-wifi"></i> New Sensor</a>
+                	</span>
                 </div>
 	        </div>
 	    </div>

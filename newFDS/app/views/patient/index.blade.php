@@ -21,7 +21,9 @@
                     </span>       -->        
                 </div>
                 <div class="col-sm-4 col-xs-6">
-                	<a href="{{ URL::to('patient/create') }}" class="btn btn-default pull-right" title="New Patient"><i class="fa fa-wheelchair"></i> New Patient</a>
+	                 <span class="pull-right">
+	                	<a href="{{ URL::to('patient/create') }}" class="btn btn-default" title="New Patient"><i class="fa fa-wheelchair"></i> New Patient</a>
+                	</span>
                 </div>
 	        </div>
 	    </div>

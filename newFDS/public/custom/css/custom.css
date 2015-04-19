@@ -94,6 +94,10 @@ img.img-monitor
 	width: 100%;
 	height: 300px;
 }
+.loader-inner>div
+{
+	background-color: #31C0BE;
+}
 /* Add any vendor prefixes you need */
 .my-animation.ng-enter {
   -webkit-animation: flipInY 1s;
