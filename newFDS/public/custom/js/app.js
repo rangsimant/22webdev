@@ -57,7 +57,7 @@ FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams, ng
 		    });
 	}
 
-	$scope.assign = function(idPatient)
+	$scope.assign = function(idPatient, idDevice)
 	{
 		$scope.notify('success', 'Assign device to '+idPatient);
 	}
@@ -86,14 +86,12 @@ FDS.controller('DeviceList', function($rootScope, $scope, $http , $filter, ngTab
 
 	$scope.getDevices = function()
 	{
-        $('.loader-inner').show();
 		$http.get($scope.baseUrl+"/getDeviceList").
 		success(function(data, status, headers, config)
 		{
 			$scope.data = [];
 			$scope.data.push(data);
 			$scope.dataTableDevice();
-            $('.loader-inner').hide();
 			console.log($scope.data);
 		}).
 		error(function(data, status, headers, config) 

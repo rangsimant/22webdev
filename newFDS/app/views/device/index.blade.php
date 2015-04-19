@@ -66,7 +66,7 @@
 	    </table>
 	    <!-- Modal Assign-->
     <div class="modal fade" id="deviceAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
+	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -102,9 +102,8 @@
 		                	<img ng-src="@{{ patient.photo }}" class="img-circle img30_30" ng-cloak>
 		                </td>
 		                <td data-title="'Patient ID'" sortable="'patient_id'" width="30%">@{{ patient.patient_id }}</td>
-		                <td data-title="'Firstname'" sortable="'firstname'" width="30%">@{{ patient.firstname }}</td>
-		                <td data-title="'Lastname'" sortable="'lastname'" width="30%">@{{ patient.lastname }}</td>
-		                <td width="15%">
+		                <td data-title="'Name'" sortable="'firstname'" width="55%">@{{ patient.firstname }} @{{ patient.lastname }}</td>
+		                <td width="10%" align="center">
 		                	<span>
 		                		<a href="javascriptA:void(0)" class="text-primary" title="Select Patient" ng-click="assign(patient.idPatient)">Select</a>
 		                	</span>
@@ -141,7 +140,6 @@
 		            </div>
 		        </footer>
 		    </script>
-
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
