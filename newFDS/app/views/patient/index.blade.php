@@ -40,7 +40,7 @@
 	                		<a href="{{ URL::to('patient') }}/@{{ patient.idPatient }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
 	                	</span>
 	                	<span>
-	                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete">Delete</a>
+	                		<a href="javascriptA:void(0)" class="btn btn-danger btn-xs" title="Delete">Delete</a>
 	                	</span>
 	                </td>
 	            </tr>

@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-sm-4 col-xs-6">
                 	<a href="{{ URL::to('sensor/create') }}" class="btn btn-default pull-right" title="New Sensor"><i class="fa fa-wifi"></i> New Sensor</a>
-                	<a href="#Reload" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
+                	<a href="javascriptA:void(0)" class="btn btn-default pull-right" title="Reload" ng-click="refreshTable()"><i class="fa fa-refresh"></i></a>
                 </div>
 	        </div>
 	    </div>
@@ -36,7 +36,7 @@
 	                		<a href="{{ URL::to('sensor') }}/@{{ sensor.idSensor }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
 	                	</span>
 	                	<span>
-	                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#sensorDelete" ng-click="getIDSensor(sensor.idSensor)">Delete</a>
+	                		<a href="javascriptA:void(0)" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#sensorDelete" ng-click="getIDSensor(sensor.idSensor)">Delete</a>
 	                	</span>
 	                </td>
 	            </tr>
