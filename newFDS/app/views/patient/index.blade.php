@@ -21,7 +21,9 @@
                     </span>       -->        
                 </div>
                 <div class="col-sm-4 col-xs-6">
-                	<a href="{{ URL::to('patient/create') }}" class="btn btn-default pull-right" title="New Patient"><i class="fa fa-wheelchair"></i> New Patient</a>
+	                 <span class="pull-right">
+	                	<a href="{{ URL::to('patient/create') }}" class="btn btn-default" title="New Patient"><i class="fa fa-wheelchair"></i> New Patient</a>
+                	</span>
                 </div>
 	        </div>
 	    </div>
@@ -40,7 +42,7 @@
 	                		<a href="{{ URL::to('patient') }}/@{{ patient.idPatient }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
 	                	</span>
 	                	<span>
-	                		<a href="#delete" class="btn btn-danger btn-xs" title="Delete">Delete</a>
+	                		<a href="javascriptA:void(0)" class="btn btn-danger btn-xs" title="Delete">Delete</a>
 	                	</span>
 	                </td>
 	            </tr>

@@ -13,6 +13,11 @@ class DevicePatient extends Eloquent
 	protected $primaryKey = 'idDevicePatient';
     public static $unguarded = true;
 
+    public static function assign($idPatient, $idDevice)
+    {
+        
+    }
+
     public static function unassign($idDevicePatient)
     {
         $devicepatient = DevicePatient::find($idDevicePatient);

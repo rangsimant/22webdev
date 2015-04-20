@@ -57,7 +57,7 @@ FDS.controller('PatientList',function($scope, $http , $filter, ngTableParams, ng
 		    });
 	}
 
-	$scope.assign = function(idPatient)
+	$scope.assign = function(idPatient, idDevice)
 	{
 		$scope.notify('success', 'Assign device to '+idPatient);
 	}

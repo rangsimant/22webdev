@@ -25,6 +25,7 @@
 		<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-fileinput/css/fileinput.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('bower_components/angular-ngToast/ngtoast/dist/ngToast.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('bower_components/angular-ngToast/ngtoast/dist/ngToast-animations.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('bower_components/loaders.css/loaders.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
 
 		<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
@@ -33,6 +34,7 @@
 		<script src="{{ asset('bower_components/angular-ngToast/angular-sanitize/angular-sanitize.min.js') }}"></script>
 		<script src="{{ asset('bower_components/angular-ngToast/angular-animate/angular-animate.min.js') }}"></script>
 		<script src="{{ asset('bower_components/angular-ngToast/ngtoast/dist/ngToast.min.js') }}"></script>
+		<script src="{{ asset('bower_components/loaders.css/loaders.css.js') }}"></script>
 		<script src="{{ asset('custom/js/app.js') }}"></script>
 		<script src="{{ asset('custom/js/devicetype.js') }}"></script>
 		<script src="{{ asset('bower_components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>
