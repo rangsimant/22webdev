@@ -16,9 +16,9 @@
 	                </form>
 	            </div>
 	            <div class="col-sm-4 col-xs-6 filter-result-info" ng-cloak>
-                    <span class="ng-binding">
+                    <!-- <span class="ng-binding">
                        All sensor @{{ sensorTable.total() }} entries
-                    </span>              
+                    </span>   -->            
                 </div>
                 <div class="col-sm-4 col-xs-6">
                 	<a href="{{ URL::to('sensor/create') }}" class="btn btn-default pull-right" title="New Sensor"><i class="fa fa-wifi"></i> New Sensor</a>

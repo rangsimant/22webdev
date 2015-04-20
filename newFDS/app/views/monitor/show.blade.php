@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="panel panel-dark table-dynamic">
-	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Monitor :{{ $map->location->name }} {{ $map->name }}</strong></div>
+	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Monitor : {{ $map->location->name }} {{ $map->name }}</strong></div>
 	<div class="panel-body" ng-controller="SensorList" ng-init="baseUrl='{{ URL::to('/') }}'" align="center">
 		<div id="monitor" class="clearfix">
 			<img src="{{ URL::to('uploads/map/'.$map->filename) }}" class="img-map img-responsive" id="monitor">
