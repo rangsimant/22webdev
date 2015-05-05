@@ -322,3 +322,149 @@ FDS.controller('SensorList',function($rootScope, $scope, $http , $filter, ngTabl
 	}
 	
 });
+
+FDS.controller('PhysicianList',function($rootScope, $scope, $http , $filter, ngTableParams){
+
+
+	$scope.$watch('baseUrl', function(){
+		$scope.getPhysician();
+		$rootScope.token = $('input[name="_token"]').attr('value');
+	 });
+
+	$scope.getPhysician = function()
+	{
+		$http.get($scope.baseUrl+"/getPhysicianList").
+		success(function(data, status, headers, config)
+		{
+			$scope.data = [];
+			$scope.data.push(data);
+			$scope.dataTablePhysician();
+		}).
+		error(function(data, status, headers, config) 
+		{
+			console.log("ststus: "+status);
+		});
+	}
+
+	$scope.refreshTable = function()
+	{
+		$scope.getPhysician();
+		$scope.physicianTable.sorting({ name:''});
+		console.log('Refresh table.');
+	}
+
+	$scope.getIDPhysician = function(idSensor)
+	{
+		$scope.idPhysician = idPhysician;
+	}
+
+	$scope.physicianDelete = function()
+	{
+		$http({
+			  method  : 'DELETE',
+			  url     : $scope.baseUrl + '/physician/'+$scope.idSensor,
+			 }).
+			success(function(data) {
+				$scope.refreshTable();
+            }).
+		 	error(function() {
+                console.log('error');
+            });
+	}
+
+	$scope.dataTablePhysician = function()
+	{
+		$scope.physicianTable = new ngTableParams({
+		        page: 1,            // show first page
+		        count: 10,           // count per page
+		        filter:{
+		        	status:''
+		        },
+		        sorting: {
+
+		        }
+		    }, {
+		        total: $scope.data[0].length, // length of data
+		        getData: function($defer, params) {
+		        	 // use build-in angular filter
+		            var orderedData = params.sorting() ? $filter('orderBy')($scope.data[0], params.orderBy()) : $scope.data[0];
+		            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+		            params.total(orderedData.length); // set total for recalc pagination
+		        }
+		    });
+	}
+	
+});
+
+FDS.controller('LocationList',function($rootScope, $scope, $http , $filter, ngTableParams){
+
+
+	$scope.$watch('baseUrl', function(){
+		$scope.getLocation();
+		$rootScope.token = $('input[name="_token"]').attr('value');
+	 });
+
+	$scope.getLocation = function()
+	{
+		$http.get($scope.baseUrl+"/getLocationList").
+		success(function(data, status, headers, config)
+		{
+			$scope.data = [];
+			$scope.data.push(data);
+			$scope.dataTableLocation();
+		}).
+		error(function(data, status, headers, config) 
+		{
+			console.log("ststus: "+status);
+		});
+	}
+
+	$scope.refreshTable = function()
+	{
+		$scope.getLocation();
+		$scope.locationTable.sorting({ name:''});
+		console.log('Refresh table.');
+	}
+
+	$scope.getIDLocation = function(idSensor)
+	{
+		$scope.idLocation = idLocation;
+	}
+
+	$scope.locationDelete = function()
+	{
+		$http({
+			  method  : 'DELETE',
+			  url     : $scope.baseUrl + '/location/'+$scope.idLocation,
+			 }).
+			success(function(data) {
+				$scope.refreshTable();
+            }).
+		 	error(function() {
+                console.log('error');
+            });
+	}
+
+	$scope.dataTableLocation = function()
+	{
+		$scope.locationTable = new ngTableParams({
+		        page: 1,            // show first page
+		        count: 10,           // count per page
+		        filter:{
+		        	status:''
+		        },
+		        sorting: {
+
+		        }
+		    }, {
+		        total: $scope.data[0].length, // length of data
+		        getData: function($defer, params) {
+		        	 // use build-in angular filter
+		            var orderedData = params.sorting() ? $filter('orderBy')($scope.data[0], params.orderBy()) : $scope.data[0];
+		            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+		            params.total(orderedData.length); // set total for recalc pagination
+		        }
+		    });
+	}
+	
+});

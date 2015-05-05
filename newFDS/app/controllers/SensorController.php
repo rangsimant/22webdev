@@ -86,6 +86,6 @@ class SensorController extends BaseController
 
 	public function getSensor()
 	{
-		return Sensor::all();
+		return Sensor::select('idSensor','name','numberOfChannels')->get();
 	}
 }

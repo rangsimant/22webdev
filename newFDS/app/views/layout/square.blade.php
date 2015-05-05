@@ -131,20 +131,20 @@
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>
-					    <li class="">
+					    <li class="{{ (Request::segment(1)=='physician')? 'active' : '' }}">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Physician" aria-expanded="true" aria-controls="Physician">
 				            	<i class="fa fa-user-md"></i><span>Physician Management</span>
 				            </a>
 				            <ul id="Physician" class="panel-collapse collapse">
-				                <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Physician</span></a></li>
+				                <li class="{{ (Request::segment(1)=='physician')? 'active' : '' }}"><a href="{{ URL::to('physician') }}"><i class="fa fa-caret-right"></i><span>Physician</span></a></li>
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>
-					     <li class="">
+					     <li class="{{ (Request::segment(1)=='location')? 'active' : '' }}">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Location" aria-expanded="true" aria-controls="Location"><i class="fa fa-location-arrow"></i><span>Location Management</span></a>
 				            <ul id="Location" class="panel-collapse collapse">
-				                <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Location</span></a></li>
-				                <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Map</span></a></li>
+				                <li class="{{ (Request::segment(1)=='location')? 'active' : '' }}"><a href="{{ URL::to('location') }}"><i class="fa fa-caret-right"></i><span>Location</span></a></li>
+				                <li class="{{ (Request::segment(1)=='map')? 'active' : '' }}"><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Map</span></a></li>
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>
