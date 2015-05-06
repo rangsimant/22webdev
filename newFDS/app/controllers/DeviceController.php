@@ -96,6 +96,11 @@ class DeviceController extends BaseController
 		return Device::getDeviceList();
 	}
 
+	public function assign($idDevice)
+	{
+		return View::make('device.assign')->with('idDevice', $idDevice);
+	}
+
 	public function destroy($idDevice)
 	{
 		$device = new Device();

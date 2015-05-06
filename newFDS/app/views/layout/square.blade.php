@@ -140,11 +140,11 @@
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>
-					     <li class="{{ (Request::segment(1)=='location')? 'active' : '' }}">
+					     <li class="{{ (Request::segment(1)=='location' || Request::segment(1)=='map')? 'active' : '' }}">
 				            <a data-toggle="collapse" data-parent="#accordion" href="#Location" aria-expanded="true" aria-controls="Location"><i class="fa fa-location-arrow"></i><span>Location Management</span></a>
 				            <ul id="Location" class="panel-collapse collapse">
 				                <li class="{{ (Request::segment(1)=='location')? 'active' : '' }}"><a href="{{ URL::to('location') }}"><i class="fa fa-caret-right"></i><span>Location</span></a></li>
-				                <li class="{{ (Request::segment(1)=='map')? 'active' : '' }}"><a href="#/tables/static"><i class="fa fa-caret-right"></i><span>Map</span></a></li>
+				                <li class="{{ (Request::segment(1)=='map')? 'active' : '' }}"><a href="{{ URL::to('map') }}"><i class="fa fa-caret-right"></i><span>Map</span></a></li>
 				            </ul>
 					        <i class="fa fa-caret-right icon-has-ul"></i>
 					    </li>

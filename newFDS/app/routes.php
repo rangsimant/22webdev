@@ -25,6 +25,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::resource('monitor','MonitorController');
 	Route::resource('physician','PhysicianController');
 	Route::resource('location','LocationController');
+	Route::resource('map','MapController');
 
 	// Ajax Route
 	Route::get('getPatientList','PatientController@getPatient');
@@ -33,7 +34,9 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('getPhysicianList','PhysicianController@getPhysician');
 	Route::get('getSensorList','SensorController@getSensor');
 	Route::get('getLocationList','LocationController@getLocation');
+	Route::get('getMapList','MapController@getMap');
 
+	Route::get('device/{idDevice}/assign', 'DeviceController@assign');
 	Route::get('devicetype/addsensor/{chaneel}/{name}', 'DeviceTypeController@addNewSensor');
 	Route::get('devicetype/{idDevicePatient}/unassign', 'DeviceTypeController@unassign');
 	Route::post('devicetype/uploadPhoto', 'DeviceTypeController@uploadPhoto');

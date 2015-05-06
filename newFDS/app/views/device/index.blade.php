@@ -50,7 +50,7 @@
 		                		<a  href="javascriptA:void(0)" class="text-danger" title="Unassign" ng-click="unassign(device.idDevicePatient)"><small>Unassign</small></a> | 
 		                		<a  href="javascriptA:void(0)" class="text-primary" title="Change"><small>Change</small></a>
 		                	</span>
-	                		<a ng-if="device.firstname == null" href="javascriptA:void(0)" class="text-primary" title="Assign" data-toggle="modal" data-target="#deviceAssign"><small>Click to Assign</small></a>
+	                		<a ng-if="device.firstname == null" href="{{ URL::to('device') }}/@{{ device.idDevice }}/assign" class="text-primary" title="Assign"><small>Click to Assign</small></a>
 	                	</div>
 	                </td>
 	                <td data-title="'Status'" sortable="'deleted_at'" width="5%">

@@ -468,3 +468,76 @@ FDS.controller('LocationList',function($rootScope, $scope, $http , $filter, ngTa
 	}
 	
 });
+
+FDS.controller('MapList',function($rootScope, $scope, $http , $filter, ngTableParams){
+
+
+	$scope.$watch('baseUrl', function(){
+		$scope.getMap();
+		$rootScope.token = $('input[name="_token"]').attr('value');
+	 });
+
+	$scope.getMap = function()
+	{
+		$http.get($scope.baseUrl+"/getMapList").
+		success(function(data, status, headers, config)
+		{
+			$scope.data = [];
+			$scope.data.push(data);
+			$scope.dataTableMap();
+		}).
+		error(function(data, status, headers, config) 
+		{
+			console.log("ststus: "+status);
+		});
+	}
+
+	$scope.refreshTable = function()
+	{
+		$scope.getMap();
+		$scope.mapTable.sorting({ name:''});
+		console.log('Refresh table.');
+	}
+
+	$scope.getIDLocation = function(idMap)
+	{
+		$scope.idMap = idMap;
+	}
+
+	$scope.mapDelete = function()
+	{
+		$http({
+			  method  : 'DELETE',
+			  url     : $scope.baseUrl + '/map/'+$scope.idLocation,
+			 }).
+			success(function(data) {
+				$scope.refreshTable();
+            }).
+		 	error(function() {
+                console.log('error');
+            });
+	}
+
+	$scope.dataTableMap = function()
+	{
+		$scope.mapTable = new ngTableParams({
+		        page: 1,            // show first page
+		        count: 10,           // count per page
+		        filter:{
+		        	status:''
+		        },
+		        sorting: {
+
+		        }
+		    }, {
+		        total: $scope.data[0].length, // length of data
+		        getData: function($defer, params) {
+		        	 // use build-in angular filter
+		            var orderedData = params.sorting() ? $filter('orderBy')($scope.data[0], params.orderBy()) : $scope.data[0];
+		            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+		            params.total(orderedData.length); // set total for recalc pagination
+		        }
+		    });
+	}
+	
+});

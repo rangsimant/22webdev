@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="panel panel-default table-dynamic">
-	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Patient</strong></div>
+	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Assign Device to Patient</strong></div>
 	<div class="" ng-controller="PatientList" ng-init="baseUrl='{{ URL::to('/') }}'">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" ng-model="csrf"/>
 	    <div class="table-filters">
@@ -39,10 +39,7 @@
 	                <td data-title="'Gender'" sortable="'gender'" width="40%">@{{ patient.gender }}</td>
 	                <td width="15%">
 	                	<span>
-	                		<a href="{{ URL::to('patient') }}/@{{ patient.idPatient }}/edit" class="btn btn-info btn-xs" title="Edit">Edit</a>
-	                	</span>
-	                	<span>
-	                		<a href="javascriptA:void(0)" class="btn btn-danger btn-xs" title="Delete">Delete</a>
+	                		<a href="javascriptA:void(0)" class="text-primary" title="Select Patient" ng-click="assign(patient.idPatient)">Select</a>
 	                	</span>
 	                </td>
 	            </tr>
