@@ -426,7 +426,7 @@ FDS.controller('LocationList',function($rootScope, $scope, $http , $filter, ngTa
 		console.log('Refresh table.');
 	}
 
-	$scope.getIDLocation = function(idSensor)
+	$scope.getIDLocation = function(idLocation)
 	{
 		$scope.idLocation = idLocation;
 	}

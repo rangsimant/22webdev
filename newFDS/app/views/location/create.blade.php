@@ -3,14 +3,13 @@
 @section('content')
 {{ HTML::ul($errors->all(), array('class' => 'alert ng-isolate-scope alert-danger alert-dismissable')) }}
 
-{{ Form::model($location, array('route' => array('location.update', $location->idLocation), 'method' => 'PUT', 'id' => 'form','class'=>'form-horizontal ng-pristine ng-valid','files' => true)) }}
+{{ Form::open(array('url' => 'location', 'class' => 'form-horizontal form-validation', 'autocomplete' => 'off')) }}
 
 	@if (Session::has('message'))
 	    <div class="alert alert-{{ Session::get('message-type', 'info') }}">{{ Session::get('message') }}</div>
 	@endif
-	<input type="hidden" name="idLocation" value="{{ $location->idLocation }}">
     <div class="panel panel-default">
-        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Edit Location</strong></div>
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> New Location</strong></div>
 		<div class="panel-body">
 
 			<div class="form-group">
@@ -18,7 +17,7 @@
 	                <label for="">Location name :</label>
 	            </div>
 	            <div class="col-sm-10">
-	                <input type="text" class="form-control" placeholder="Name" name="name" value="{{ (Input::old('name') === null) ? $location->name : Input::old('name') }}" autofocus>
+	                <input type="text" class="form-control" placeholder="Name" name="name" value="" autofocus>
 	            </div>
 	        </div>
 
@@ -27,7 +26,7 @@
 	                <label for="">Address :</label>
 	            </div>
 	            <div class="col-sm-10">
-	                <textarea type="text" class="form-control" placeholder="Address" name="address">{{ (Input::old('address') === null) ? $location->address : Input::old('address') }}</textarea>
+	                <textarea type="text" class="form-control" placeholder="Address" name="address"></textarea>
 	            </div>
 	        </div>
 
@@ -36,7 +35,7 @@
 	                <label for="">Description :</label>
 	            </div>
 	            <div class="col-sm-10">
-	                <input type="text" class="form-control" placeholder="Description" name="description" value="{{ (Input::old('description') === null) ? $location->description : Input::old('description') }}">
+	                <input type="text" class="form-control" placeholder="Description" name="description" value="">
 	            </div>
 	        </div>
 
@@ -47,7 +46,7 @@
 	            <div class="col-sm-10">
 	            	<span>
 	            		<a href="{{ URL::to('location') }}" class="btn btn-default">Cencel</a>
-		                <button type="submit" class="btn btn-primary">Update</button>
+		                <button type="submit" class="btn btn-primary">Create</button>
 	            	</span>
 	            </div>
 	        </div>
